@@ -15,8 +15,20 @@ OBJECTS_DIR = ../build/obj
 
 # Input
 HEADERS += \
-    src/app.h
+    src/app.h \
+    src/math/matrix3.h \
+    src/math/matrix4.h \
+    src/math/vec2.h \
+    src/math/vec3.h \
+    src/math/vec4.h \
+    src/math/mathshelpers.h \
+    src/math/quaternion.h
 
 SOURCES += \
     src/app.cpp \
-    src/main.cpp
+    src/main.cpp \
+    src/math/matrix3.cpp \
+    src/math/matrix4.cpp \
+    src/math/vec2.cpp \
+    src/math/vec3.cpp \
+    src/math/quaternion.cpp

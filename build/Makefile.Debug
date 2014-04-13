@@ -44,9 +44,19 @@ OBJECTS_DIR   = ..\build\obj
 ####### Files
 
 SOURCES       = ..\particle-system\src\app.cpp \
-		..\particle-system\src\main.cpp 
+		..\particle-system\src\main.cpp \
+		..\particle-system\src\math\matrix3.cpp \
+		..\particle-system\src\math\matrix4.cpp \
+		..\particle-system\src\math\vec2.cpp \
+		..\particle-system\src\math\vec3.cpp \
+		..\particle-system\src\math\quaternion.cpp 
 OBJECTS       = ../build/obj/app.o \
-		../build/obj/main.o
+		../build/obj/main.o \
+		../build/obj/matrix3.o \
+		../build/obj/matrix4.o \
+		../build/obj/vec2.o \
+		../build/obj/vec3.o \
+		../build/obj/quaternion.o
 
 DIST          = 
 QMAKE_TARGET  = ParticleSystem
@@ -87,7 +97,7 @@ dist:
 	$(ZIP) ParticleSystem.zip $(SOURCES) $(DIST) ..\particle-system\particle-system.pro ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\spec_pre.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\qdevice.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\device_config.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\common\shell-win32.conf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\qconfig.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_axbase.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_axbase_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_axcontainer.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_axserver.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_axserver_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_bluetooth.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_clucene_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_concurrent.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_core.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_core_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_declarative.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_declarative_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_designer.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_designer_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_gui.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_gui_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_help.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_help_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_multimedia.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_network.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_network_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_nfc.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_nfc_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_opengl.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_opengl_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_openglextensions.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_platformsupport_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_positioning.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_positioning_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_printsupport.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_qml.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_qml_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_qmltest.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_quick.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_quick_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_script.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_script_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_scripttools.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_scripttools_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_sensors.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_sensors_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_serialport.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_serialport_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_sql.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_sql_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_svg.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_svg_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_testlib.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_testlib_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_uitools.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_uitools_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_webkit.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_webkit_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_webkitwidgets.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_webkitwidgets_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_widgets.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_widgets_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_winextras.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_winextras_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_xml.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_xml_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\qt_functions.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\qt_config.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\win32-g++\qmake.conf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\spec_post.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\exclusive_builds.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\default_pre.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\win32\default_pre.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\resolve_config.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\exclusive_builds_post.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\default_post.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\build_pass.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\win32\console.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\win32\rtti.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\warn_on.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\qt.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\resources.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\moc.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\win32\opengl.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\uic.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\testcase_targets.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\exceptions.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\yacc.prf ..\..\..\..\..\..\Qt\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\lex.prf ..\particle-system\particle-system.pro C:/Qt/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5OpenGLd.prl C:/Qt/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Widgetsd.prl C:/Qt/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Guid.prl C:/Qt/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Cored.prl  RESOURCES HEADERS SOURCES OBJECTIVE_SOURCES FORMS YACCSOURCES YACCSOURCES LEXSOURCES 
 
 clean: compiler_clean 
-	-$(DEL_FILE) ..\build\obj\app.o ..\build\obj\main.o
+	-$(DEL_FILE) ..\build\obj\app.o ..\build\obj\main.o ..\build\obj\matrix3.o ..\build\obj\matrix4.o ..\build\obj\vec2.o ..\build\obj\vec3.o ..\build\obj\quaternion.o
 
 distclean: clean
 	-$(DEL_FILE) $(DESTDIR_TARGET)
@@ -373,6 +383,29 @@ compiler_clean:
 		../../../../../../Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/QSurfaceFormat \
 		../../../../../../Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qsurfaceformat.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ..\build\obj\main.o ..\particle-system\src\main.cpp
+
+../build/obj/matrix3.o: ../particle-system/src/math/matrix3.cpp ../particle-system/src/math/matrix3.h \
+		../particle-system/src/math/matrix4.h \
+		../particle-system/src/math/vec3.h \
+		../particle-system/src/math/mathshelpers.h \
+		../particle-system/src/math/vec4.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ..\build\obj\matrix3.o ..\particle-system\src\math\matrix3.cpp
+
+../build/obj/matrix4.o: ../particle-system/src/math/matrix4.cpp ../particle-system/src/math/matrix4.h \
+		../particle-system/src/math/vec3.h \
+		../particle-system/src/math/mathshelpers.h \
+		../particle-system/src/math/vec4.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ..\build\obj\matrix4.o ..\particle-system\src\math\matrix4.cpp
+
+../build/obj/vec2.o: ../particle-system/src/math/vec2.cpp ../particle-system/src/math/vec2.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ..\build\obj\vec2.o ..\particle-system\src\math\vec2.cpp
+
+../build/obj/vec3.o: ../particle-system/src/math/vec3.cpp ../particle-system/src/math/vec3.h \
+		../particle-system/src/math/mathshelpers.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ..\build\obj\vec3.o ..\particle-system\src\math\vec3.cpp
+
+../build/obj/quaternion.o: ../particle-system/src/math/quaternion.cpp ../particle-system/src/math/quaternion.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ..\build\obj\quaternion.o ..\particle-system\src\math\quaternion.cpp
 
 ####### Install
 
