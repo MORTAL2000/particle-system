@@ -123,6 +123,36 @@ Matrix4 Matrix4::createLookAt(const Vec3 &from, const Vec3 &lookingAt) {
 	return m*r;
 }
 
+Matrix4 Matrix4::createRotation(Quaternion &q) {
+    Matrix4 m;
+
+    float xx = q.x * q.x;
+    float xy = q.x * q.y;
+    float xz = q.x * q.z;
+    float xw = q.x * q.w;
+
+    float yy = q.y * q.y;
+    float yz = q.y * q.z;
+    float yw = q.y * q.w;
+
+    float zz = q.z * q.z;
+    float zw = q.z * q.w;
+
+    m.array[0] = 1 - 2 * (yy + zz);
+    m.array[1] = 2 * (xy - zw);
+    m.array[2] = 2 * (xz + yw);
+
+    m.array[4] = 2 * (xy + zw);
+    m.array[5] = 1 - 2 * (xx + zz);
+    m.array[6] = 2 * (yz - xw);
+
+    m.array[8] = 2 * (xz - yw);
+    m.array[9] = 2 * (yz + xw);
+    m.array[10] = 1 - 2 * (xx + yy);
+
+    return m;
+}
+
 Matrix4 Matrix4::createRotation(float degrees, const Vec3 &inaxis) {
 	Matrix4 m;
 

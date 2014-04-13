@@ -6,6 +6,7 @@
 #include "vec3.h"
 #include "vec4.h"
 #include "mathshelpers.h"
+#include "quaternion.h"
 
 class Matrix4 {
 	public:
@@ -33,6 +34,7 @@ class Matrix4 {
         static Matrix4 createPerspective(float znear, float zfar, float aspect, float fov);
         static Matrix4 createOrthographic(float znear, float zfar,float right, float left, float top, float bottom);
         static Matrix4 createLookAt(const Vec3 &from, const Vec3 &lookingAt);
+        static Matrix4 createRotation(Quaternion &q);
 
         static Matrix4 identity();
 

@@ -7,6 +7,18 @@ Quaternion::Quaternion(float x, float y, float z, float w) {
     this->w = w;
 }
 
+Quaternion::Quaternion(float radAngle, Vec3& axis) {
+    float a = radAngle/2;
+    float sina = sin(a);
+
+    x = sina * axis.x;
+    y = sina * axis.y;
+    z = sina * axis.z;
+    w = cos(a);
+
+    normalize();
+}
+
 Quaternion::Quaternion(Quaternion &q) {
     x = q.x;
     y = q.y;
