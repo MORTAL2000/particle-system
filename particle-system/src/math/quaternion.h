@@ -22,6 +22,7 @@ public:
     Quaternion conjugate();
     Quaternion& normalize();
     float length();
+    void setToAngle(float radAngle);
 
     inline friend ostream& operator<<(ostream& o, const Quaternion& q) {
         o << "(" << q.x << ", " << q.y << ", " << q.z << ", " << q.w << ")";
