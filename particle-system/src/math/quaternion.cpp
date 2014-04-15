@@ -8,6 +8,10 @@ Quaternion::Quaternion(float x, float y, float z, float w) {
 }
 
 Quaternion::Quaternion(float radAngle, Vec3& axis) {
+    setToAngle(radAngle);
+}
+
+void Quaternion::setToAngle(float radAngle) {
     float a = radAngle/2;
     float sina = sin(a);
 
