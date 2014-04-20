@@ -4,10 +4,15 @@ TARGET = ParticleSystem
 TEMPLATE = app
 
 DEPENDPATH += src
-INCLUDEPATH = src "../lib/glew-mingw/include"
 
 win32 {
+    INCLUDEPATH = src "../lib/glew-mingw/include"
     LIBS += -L"..\lib\glew-mingw\lib" -lglew32
+}
+
+macx {
+    INCLUDEPATH = src "../lib/glew-osx/include"
+    LIBS += -L"../lib/glew-osx/lib"
 }
 
 DESTDIR = ../build/
