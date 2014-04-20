@@ -57,6 +57,11 @@ Quaternion& Quaternion::normalize() {
     return this->divideByScalar(length());
 }
 
+Quaternion Quaternion::inverse() {
+    float l = length();
+    return conjugate().divideByScalar(l*l);
+}
+
 float Quaternion::length() {
     return sqrt(w*w + x*x + y*y + z*z);
 }

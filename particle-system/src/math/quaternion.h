@@ -21,6 +21,7 @@ public:
     Quaternion operator/(float scalar);
     Quaternion conjugate();
     Quaternion& normalize();
+    Quaternion inverse();
     float length();
     void setToAngle(float radAngle, Vec3 &axis);
 
