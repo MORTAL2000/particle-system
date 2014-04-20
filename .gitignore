@@ -8,10 +8,7 @@
 *.log
 
 #build
-build/debug/
-build/release
-build/obj
-build/Makefile*
+build/*
 
 #os file
 .DS_Store
