@@ -6,7 +6,7 @@
 class RenderFramework
 {
 public:
-    RenderFramework();
+    RenderFramework() {}
 
     virtual void pushMatrix(const Matrix4& mat) = 0;
 

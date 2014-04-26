@@ -30,7 +30,9 @@ HEADERS += \
     src/math/quaternion.h \
     src/renderer.h \
     src/renderframework.h \
-    src/matrixstack.h
+    src/matrixstack.h \
+    src/shader.h \
+    src/bufferattributes.h
 
 SOURCES += \
     src/app.cpp \
@@ -41,4 +43,4 @@ SOURCES += \
     src/math/vec3.cpp \
     src/math/quaternion.cpp \
     src/renderer.cpp \
-    src/renderframework.cpp
+    src/shader.cpp
