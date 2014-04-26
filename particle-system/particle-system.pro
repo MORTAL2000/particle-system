@@ -27,7 +27,10 @@ HEADERS += \
     src/math/vec3.h \
     src/math/vec4.h \
     src/math/mathshelpers.h \
-    src/math/quaternion.h
+    src/math/quaternion.h \
+    src/renderer.h \
+    src/renderframework.h \
+    src/matrixstack.h
 
 SOURCES += \
     src/app.cpp \
@@ -36,4 +39,6 @@ SOURCES += \
     src/math/matrix4.cpp \
     src/math/vec2.cpp \
     src/math/vec3.cpp \
-    src/math/quaternion.cpp
+    src/math/quaternion.cpp \
+    src/renderer.cpp \
+    src/renderframework.cpp

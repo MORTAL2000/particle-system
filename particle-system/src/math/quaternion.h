@@ -14,19 +14,19 @@ public:
     };
 
     Quaternion(float x = 0.0f, float y = 0.0f, float z = 0.0f, float w = 0.0f);
-    Quaternion(Quaternion &q);
-    Quaternion(float radAngle, Vec3 &axis);
-    Quaternion operator*(Quaternion &q);
+    Quaternion(const Quaternion &q);
+    Quaternion(float radAngle, Vec3 axis);
+    Quaternion operator*(const Quaternion &q);
     Quaternion& divideByScalar(float scalar);
     Quaternion operator/(float scalar);
     Quaternion conjugate();
     Quaternion& normalize();
     Quaternion inverse();
     float length();
-    void setToAngle(float radAngle, Vec3 &axis);
+    void setToAngle(float radAngle, Vec3 axis);
 
     inline friend ostream& operator<<(ostream& o, const Quaternion& q) {
-        o << "(" << q.x << ", " << q.y << ", " << q.z << ", " << q.w << ")";
+        o << "(" << q.w << ", " << q.x << ", " << q.y << ", " << q.z << ")";
         return o;
     }
 };

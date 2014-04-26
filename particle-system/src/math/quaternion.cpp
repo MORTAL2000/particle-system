@@ -7,11 +7,13 @@ Quaternion::Quaternion(float x, float y, float z, float w) {
     this->w = w;
 }
 
-Quaternion::Quaternion(float radAngle, Vec3& axis) {
+Quaternion::Quaternion(float radAngle, Vec3 axis) {
     setToAngle(radAngle, axis);
 }
 
-void Quaternion::setToAngle(float radAngle, Vec3& axis) {
+void Quaternion::setToAngle(float radAngle, Vec3 axis) {
+    axis.normalize();
+
     float a = radAngle/2;
     float sina = sin(a);
 
@@ -23,14 +25,14 @@ void Quaternion::setToAngle(float radAngle, Vec3& axis) {
     normalize();
 }
 
-Quaternion::Quaternion(Quaternion &q) {
+Quaternion::Quaternion(const Quaternion &q) {
     x = q.x;
     y = q.y;
     z = q.z;
     w = q.w;
 }
 
-Quaternion Quaternion::operator*(Quaternion &q1) {
+Quaternion Quaternion::operator*(const Quaternion &q1) {
     Quaternion q2(*this);
     q2.w = q1.w*w - q1.x*x - q1.y*y - q1.z*z;
     q2.x = q1.w*x + q1.x*w + q1.y*z - q1.z*y;
