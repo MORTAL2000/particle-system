@@ -7,6 +7,7 @@
 #include <string>
 #include <stdexcept>
 #include <assert.h>
+#include <map>
 #include "gl.h"
 
 #include "math/matrix3.h"

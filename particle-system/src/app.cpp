@@ -2,7 +2,13 @@
 
 App::App()
 {
+    scene = new Scene();
+    renderer = new Renderer(scene);
+}
 
+App::~App() {
+    delete renderer;
+    delete scene;
 }
 
 void App::initializeGL() {
@@ -15,5 +21,5 @@ void App::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    renderer.render(timer.elapsed());
+    renderer->render(timer.elapsed());
 }

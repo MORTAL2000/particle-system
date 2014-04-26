@@ -32,7 +32,10 @@ HEADERS += \
     src/renderframework.h \
     src/matrixstack.h \
     src/shader.h \
-    src/bufferattributes.h
+    src/bufferattributes.h \
+    src/scene.h \
+    src/scenenode.h \
+    src/modelnode.h
 
 SOURCES += \
     src/app.cpp \
@@ -43,4 +46,7 @@ SOURCES += \
     src/math/vec3.cpp \
     src/math/quaternion.cpp \
     src/renderer.cpp \
-    src/shader.cpp
+    src/shader.cpp \
+    src/scene.cpp \
+    src/scenenode.cpp \
+    src/modelnode.cpp
