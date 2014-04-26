@@ -3,3 +3,8 @@
 SceneNode::SceneNode()
 {
 }
+
+Matrix4 SceneNode::getTransform() const
+{
+
+}

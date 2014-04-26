@@ -35,7 +35,8 @@ HEADERS += \
     src/bufferattributes.h \
     src/scene.h \
     src/scenenode.h \
-    src/modelnode.h
+    src/modelnode.h \
+    src/mesh.h
 
 SOURCES += \
     src/app.cpp \
@@ -49,4 +50,5 @@ SOURCES += \
     src/shader.cpp \
     src/scene.cpp \
     src/scenenode.cpp \
-    src/modelnode.cpp
+    src/modelnode.cpp \
+    src/mesh.cpp

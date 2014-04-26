@@ -22,7 +22,10 @@ void Renderer::popMatrix()
 
 Matrix4 Renderer::getMVP() const
 {
-    return Matrix4::identity();
+    // Matrix4 view = scene->getCamera()->getViewMatrix();
+    // Matrix4 projection = scene->getCamera()->getProjectionMatrix();
+    // Matrix4 model = stack().top();
+    // return projection * view * model;
 }
 
 float Renderer::getTime() const
@@ -33,10 +36,6 @@ float Renderer::getTime() const
 void Renderer::render(float time)
 {
     pushMatrix(Matrix4::identity());
-
-    // TODO
-    // computeViewProjectionMatrix();
-    // mat4 vp = camera.getViewMatrix * camera.getProjectionMatrix();
 
     vector<SceneNode*>::const_iterator it;
     for(it = scene->begin(); it != scene->end(); ++it) {

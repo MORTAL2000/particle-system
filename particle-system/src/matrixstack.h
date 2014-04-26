@@ -30,6 +30,14 @@ public:
         return stack.size() == 0;
     }
 
+    T top() {
+        if(size() > 0) {
+            return stack.back();
+        } else {
+            throw logic_error("the stack is empty");
+        }
+    }
+
     T pop() {
         if(size() > 0) {
             T tmp = stack.back();

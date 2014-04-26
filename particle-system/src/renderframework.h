@@ -8,6 +8,8 @@ class RenderFramework
 public:
     RenderFramework() {}
 
+    virtual ~RenderFramework() {}
+
     virtual void pushMatrix(const Matrix4& mat) = 0;
 
     virtual void popMatrix() = 0;
