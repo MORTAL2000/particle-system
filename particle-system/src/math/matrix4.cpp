@@ -38,26 +38,6 @@ void Matrix4::toZero() {
 	}
 }
 
-Vec3 Matrix4::getPositionVector() const {
-	return Vec3(array[12], array[13], array[14]);
-}
-
-void Matrix4::setPositionVector(const Vec3 in) {
-	array[12] = in.x;
-	array[13] = in.y;
-	array[14] = in.z;		
-}
-
-Vec3 Matrix4::getScalingVector() const{
-	return Vec3(array[0], array[5], array[10]);
-}
-
-void Matrix4::setScalingVector(const Vec3 &in) {
-	array[0]  = in.x;
-	array[5]  = in.y;
-	array[10] = in.z;		
-}
-
 Matrix4 Matrix4::identity() {
 	Matrix4 m;
 
@@ -97,12 +77,11 @@ Matrix4 Matrix4::createOrthographic(float znear, float zfar,float right, float l
 }
 
 Matrix4 Matrix4::createLookAt(const Vec3 &from, const Vec3 &lookingAt) {
-	Matrix4 r;
+    Matrix4 r = Matrix4::createTranslation(-from);
 	Matrix4 m;
 	Vec3 f = (lookingAt - from);
     Vec3 up = Vec3::up();
 
-    r.setPositionVector(Vec3(-from.x, -from.y, -from.z));
     f.normalize();
 
     Vec3 s = f.cross(up);

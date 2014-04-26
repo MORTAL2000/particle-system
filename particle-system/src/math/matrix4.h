@@ -23,10 +23,6 @@ class Matrix4 {
 
         void toZero();
         void toIdentity();
-        Vec3 getPositionVector() const;
-        void setPositionVector(const Vec3 in);
-        Vec3 getScalingVector() const;
-        void setScalingVector(const Vec3 &in);
 
         static Matrix4 createRotation(float degrees, const Vec3 &axis);
         static Matrix4 createScale(const Vec3 &scale);
