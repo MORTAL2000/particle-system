@@ -2,6 +2,7 @@
 #define MATRIXSTACK_H
 
 #include <vector>
+#include <stdexcept>
 
 using namespace std;
 
@@ -17,16 +18,25 @@ public:
     }
 
     void push(T mat) {
-        T top = stack.back();
-        stack.push_back(top * mat);
+        if(size() > 0) {
+            T top = stack.back();
+            stack.push_back(top * mat);
+        } else {
+            stack.push_back(mat);
+        }
     }
 
-    bool pop() {
-        if(size() > 1) {
+    bool isEmpty() {
+        return stack.size() == 0;
+    }
+
+    T pop() {
+        if(size() > 0) {
+            T tmp = stack.back();
             stack.pop_back();
-            return true;
+            return tmp;
         } else {
-            return false;
+            throw logic_error("the stack is empty");
         }
     }
 };
