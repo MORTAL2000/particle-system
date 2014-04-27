@@ -8,9 +8,9 @@ using namespace std;
 
 class Scene
 {
-    vector<SceneNode*> nodes;
 public:
     Scene();
+    vector<SceneNode*> nodes;
 
     // TODO : add / removal / camera
 

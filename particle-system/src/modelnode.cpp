@@ -2,6 +2,15 @@
 
 ModelNode::ModelNode(RenderFramework* framework, Mesh* mesh)
 {
+    this->visible = true;
+    this->mesh = mesh;
+    this->framework = framework;
+}
+
+ModelNode::ModelNode(RenderFramework* framework, Mesh* mesh, Vec3 position, Quaternion orientation)
+    : SceneNode(position, orientation)
+{
+    this->visible = true;
     this->mesh = mesh;
     this->framework = framework;
 }

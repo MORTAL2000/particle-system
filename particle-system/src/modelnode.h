@@ -16,12 +16,15 @@ private:
     Vec3 scale;
     Matrix4 getScalingMatrix() const;
 
-public:
-    ModelNode(RenderFramework* framework, Mesh* mesh);
-
-    void setVisible(bool visible);
+protected:
     virtual void sendUniforms() = 0;
     void sendDefaultUniforms();
+
+public:
+    ModelNode(RenderFramework *framework, Mesh *mesh);
+    ModelNode(RenderFramework* framework, Mesh* mesh, Vec3 position, Quaternion orientation);
+
+    void setVisible(bool visible);
     void addChild(ModelNode *child);
     void visit();
     void setScale(const Vec3& scale);
