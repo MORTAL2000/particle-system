@@ -26,11 +26,11 @@ public:
         }
     }
 
-    bool isEmpty() {
+    bool isEmpty() const {
         return stack.size() == 0;
     }
 
-    T top() {
+    T top() const {
         if(size() > 0) {
             return stack.back();
         } else {

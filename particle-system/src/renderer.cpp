@@ -22,10 +22,18 @@ void Renderer::popMatrix()
 
 Matrix4 Renderer::getMVP() const
 {
-    // Matrix4 view = scene->getCamera()->getViewMatrix();
-    // Matrix4 projection = scene->getCamera()->getProjectionMatrix();
-    // Matrix4 model = stack().top();
-    // return projection * view * model;
+    Matrix4 mvp;
+
+    try {
+        Matrix4 view = scene->getCamera()->getViewMatrix();
+        Matrix4 projection = scene->getCamera()->getProjectionMatrix();
+        Matrix4 model = stack.top();
+        mvp = projection * view * model;
+    } catch(const exception& e) {
+        cerr << e.what() << endl;
+    }
+
+    return mvp;
 }
 
 float Renderer::getTime() const
