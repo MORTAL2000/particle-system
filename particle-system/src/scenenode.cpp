@@ -12,11 +12,6 @@ SceneNode::~SceneNode()
 
 }
 
-Matrix4 SceneNode::getTransform() const
-{
-	return null;
-}
-
 void SceneNode::setPosition(Vec4 position)
 {
 	this->position = position;

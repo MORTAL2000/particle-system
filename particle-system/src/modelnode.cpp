@@ -14,6 +14,16 @@ void ModelNode::sendDefaultUniforms()
     mat->sendUniform("time", framework->getTime());
 }
 
+Matrix4 ModelNode::getScalingMatrix() const
+{
+    return Matrix4::createScale(scale);
+}
+
+Matrix4 ModelNode::getTransform() const
+{
+    return getTranslationMatrix() * getRotationMatrix() * getScalingMatrix();
+}
+
 void ModelNode::setVisible(bool visible)
 {
     this->visible = visible;

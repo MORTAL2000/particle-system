@@ -10,8 +10,6 @@ class SceneNode
 		SceneNode(Vec4 position, Quaternion orientation);
 		virtual ~SceneNode();
 
-		Matrix4 getTransform() const;
-
 		// Position
 		void setPosition(Vec4 position);
 		Vec4 getPosition();

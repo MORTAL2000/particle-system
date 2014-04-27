@@ -13,6 +13,8 @@ private:
     Mesh *mesh;
     RenderFramework *framework;
     vector<ModelNode*> children;
+    Vec3 scale;
+    Matrix4 getScalingMatrix() const;
 
 public:
     ModelNode(RenderFramework* framework, Mesh* mesh);
@@ -22,6 +24,8 @@ public:
     void sendDefaultUniforms();
     void addChild(ModelNode *child);
     void visit();
+    void setScale(const Vec3& scale);
+    Matrix4 getTransform() const;
 };
 
 #endif // MODELNODE_H
