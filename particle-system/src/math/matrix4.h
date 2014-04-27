@@ -35,7 +35,7 @@ class Matrix4 {
         static Matrix4 identity();
 
 		inline Matrix4 operator*(const Matrix4 &a) const {	
-			Matrix4 out;
+            Matrix4 out;
 
 			for(unsigned int r = 0; r < 4; ++r) {
 				for(unsigned int c = 0; c < 4; ++c) {
@@ -65,7 +65,7 @@ class Matrix4 {
 			vec.z = vec.z / temp;
 
 			return vec;
-		};
+        }
 
 		inline Vec4 operator*(const Vec4 &v) const {
 			return Vec4(
@@ -74,7 +74,7 @@ class Matrix4 {
                 v.x*array[8] + v.y * array[9] + v.z * array[10] + v.w * array[11],
                 v.x*array[12] + v.y * array[13] + v.z * array[14] + v.w * array[15]
 			);
-		};
+        }
 
 		inline friend std::ostream& operator<<(std::ostream& o, const Matrix4& m) {
 			o << "\t" << m.array[0]  << " " << m.array[1]  << " " << m.array[2]  << " " << m.array [3]  << std::endl;

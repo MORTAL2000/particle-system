@@ -5,6 +5,7 @@ ModelNode::ModelNode(RenderFramework* framework, Mesh* mesh)
     this->visible = true;
     this->mesh = mesh;
     this->framework = framework;
+    this->scale = Vec3(1.0f);
 }
 
 ModelNode::ModelNode(RenderFramework* framework, Mesh* mesh, Vec3 position, Quaternion orientation)
@@ -13,6 +14,7 @@ ModelNode::ModelNode(RenderFramework* framework, Mesh* mesh, Vec3 position, Quat
     this->visible = true;
     this->mesh = mesh;
     this->framework = framework;
+    this->scale = Vec3(1.0f);
 }
 
 void ModelNode::sendDefaultUniforms()
@@ -54,7 +56,7 @@ void ModelNode::visit()
         return;
 
     framework->pushMatrix(getTransform());
-
+    cout << "visit" << endl;
     vector<ModelNode*>::iterator it;
     for(it = children.begin(); it != children.end(); ++it) {
         (*it)->visit();

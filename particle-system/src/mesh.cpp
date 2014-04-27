@@ -3,17 +3,14 @@
 Mesh::Mesh(Shader* material)
 {
     this->material = material;
-    for(int i = 0; i < BUFFER_COUNT; ++i) {
-        vbo[i] = 0;
-    }
-
-    glGenVertexArrays(1, &vao);
+    this->vbo = 0;
+    this->vao = 0;
 }
 
 Mesh::~Mesh()
 {
     glDeleteVertexArrays(1, &vao);
-    glDeleteBuffers(BUFFER_COUNT, vbo);
+    glDeleteBuffers(1, &vbo);
 }
 
 Shader* Mesh::getMaterial()
@@ -25,15 +22,29 @@ void Mesh::draw() {
     glBindVertexArray(vao);
 
     // TODO : draw call
+    // glDrawArrays(type, 0, count);
 
     glBindVertexArray(0);
 }
 
-void Mesh::createBufferData()
+void Mesh::createInterleavedBufferData(const vector<VertexBufferDataInfo>& dataInfo,
+                                       void* data, GLsizeiptr totalDataSize, GLenum usage)
 {
+    glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
 
-    // TODO : create buffer data
+    glGenBuffers(1, &vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(GL_ARRAY_BUFFER, totalDataSize, data, usage);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+    // send data
+    vector<VertexBufferDataInfo>::const_iterator it;
+    for(it = dataInfo.begin(); it != dataInfo.end(); ++it) {
+        VertexBufferDataInfo info = (*it);
+        glVertexAttribPointer(info.attributeType, info.size, GL_FLOAT, GL_FALSE, info.stride, BUFFER_OFFSET(info.offset));
+        glEnableVertexAttribArray(info.attributeType);
+    }
 
     glBindVertexArray(0);
 }
