@@ -36,7 +36,6 @@ void Mesh::createInterleavedBufferData(const vector<VertexBufferDataInfo>& dataI
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(GL_ARRAY_BUFFER, totalDataSize, data, usage);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     // send data
     vector<VertexBufferDataInfo>::const_iterator it;
@@ -46,5 +45,6 @@ void Mesh::createInterleavedBufferData(const vector<VertexBufferDataInfo>& dataI
         glEnableVertexAttribArray(info.attributeType);
     }
 
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 }
