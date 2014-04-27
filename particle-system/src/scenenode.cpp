@@ -4,7 +4,7 @@ SceneNode::SceneNode()
 {
 }
 
-SceneNode::SceneNode(Vec4 position, Quaternion orientation) : position(position), orientation(orientation)
+SceneNode::SceneNode(Vec3 position, Quaternion orientation) : position(position), orientation(orientation)
 {}
 
 SceneNode::~SceneNode()
@@ -12,12 +12,12 @@ SceneNode::~SceneNode()
 
 }
 
-void SceneNode::setPosition(Vec4 position)
+void SceneNode::setPosition(Vec3 position)
 {
 	this->position = position;
 }
 
-Vec4 SceneNode::getPosition()
+Vec3 SceneNode::getPosition()
 {
 	return this->position;
 }
@@ -30,4 +30,14 @@ void SceneNode::setOrientation(Quaternion orientation)
 Quaternion SceneNode::getOrientation()
 {
 	return this->orientation;
+}
+
+Matrix4 SceneNode::getRotationMatrix() const
+{
+    return Matrix4::createRotation(orientation);
+}
+
+Matrix4 SceneNode::getTranslationMatrix() const
+{
+    return Matrix4::createTranslation(-position);
 }
