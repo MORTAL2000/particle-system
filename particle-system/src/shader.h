@@ -8,7 +8,7 @@
 #include <stdexcept>
 #include <assert.h>
 #include <map>
-#include "gl.h"
+#include "gl3.h"
 
 #include "math/matrix3.h"
 #include "math/vec2.h"

@@ -102,7 +102,7 @@ Matrix4 Matrix4::createLookAt(const Vec3 &from, const Vec3 &lookingAt) {
 	return m*r;
 }
 
-Matrix4 Matrix4::createRotation(Quaternion &q) {
+Matrix4 Matrix4::createRotation(const Quaternion &q) {
     Matrix4 m;
 
     float xx = q.x * q.x;
