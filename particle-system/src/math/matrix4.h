@@ -54,11 +54,11 @@ class Matrix4 {
 
 			float temp;
 
-			vec.x = v.x * array[0] + v.y * array[4] + v.z * array[8]  + array[12];
-			vec.y = v.x * array[1] + v.y * array[5] + v.z * array[9]  + array[13];
-			vec.z = v.x * array[2] + v.y * array[6] + v.z * array[10] + array[14];
+            vec.x = v.x * array[0] + v.y * array[1] + v.z * array[2]  + array[3];
+            vec.y = v.x * array[4] + v.y * array[5] + v.z * array[6]  + array[7];
+            vec.z = v.x * array[8] + v.y * array[9] + v.z * array[10] + array[11];
 
-			temp =  v.x * array[3] + v.y * array[7] + v.z * array[11] + array[15];
+            temp =  v.x * array[12] + v.y * array[13] + v.z * array[14] + array[15];
 
 			vec.x = vec.x / temp;
 			vec.y = vec.y / temp;
@@ -69,10 +69,10 @@ class Matrix4 {
 
 		inline Vec4 operator*(const Vec4 &v) const {
 			return Vec4(
-				v.x*array[0] + v.y * array[4] + v.z * array[8]  + v.w * array[12],
-				v.x*array[1] + v.y * array[5] + v.z * array[9]  + v.w * array[13],
-				v.x*array[2] + v.y * array[6] + v.z * array[10] + v.w * array[14],
-				v.x*array[3] + v.y * array[7] + v.z * array[11] + v.w * array[15]
+                v.x*array[0] + v.y * array[1] + v.z * array[2]  + v.w * array[3],
+                v.x*array[4] + v.y * array[5] + v.z * array[6]  + v.w * array[7],
+                v.x*array[8] + v.y * array[9] + v.z * array[10] + v.w * array[11],
+                v.x*array[12] + v.y * array[13] + v.z * array[14] + v.w * array[15]
 			);
 		};
 

@@ -54,8 +54,8 @@ Matrix4 Matrix4::createPerspective(float znear, float zfar, float aspect, float 
 	m.array[0]	 = h / aspect;
 	m.array[5]	 = h;
     m.array[10] = (zfar+znear) / negDepth;
-	m.array[11] = -1.0f;
-    m.array[14] = 2.0f * (znear*zfar) / negDepth;
+    m.array[14] = -1.0f;
+    m.array[11] = 2.0f * (znear*zfar) / negDepth;
 	m.array[15] = 0.0f;
 
 	return m;
@@ -68,9 +68,9 @@ Matrix4 Matrix4::createOrthographic(float znear, float zfar,float right, float l
 	m.array[5]	 = 2.0f / (top-bottom);
 	m.array[10] = -2.0f / (zfar-znear);
 
-	m.array[12]  = -(right+left) / (right-left);
-	m.array[13]  = -(top+bottom) / (top-bottom);
-	m.array[14]  = -(zfar+znear) / (zfar-znear);
+    m.array[3]  = -(right+left) / (right-left);
+    m.array[7]  = -(top+bottom) / (top-bottom);
+    m.array[11]  = -(zfar+znear) / (zfar-znear);
 	m.array[15]  = 1.0f;
 
 	return m;
@@ -88,15 +88,15 @@ Matrix4 Matrix4::createLookAt(const Vec3 &from, const Vec3 &lookingAt) {
     Vec3 u = s.cross(f);
 
 	m.array[0] = s.x;
-	m.array[4] = s.y;
-	m.array[8] = s.z;
+    m.array[1] = s.y;
+    m.array[2] = s.z;
 
-	m.array[1] = u.x;
+    m.array[4] = u.x;
 	m.array[5] = u.y;
-	m.array[9] = u.z;
+    m.array[6] = u.z;
 
-	m.array[2]  = -f.x;
-	m.array[6]  = -f.y;
+    m.array[8]  = -f.x;
+    m.array[9]  = -f.y;
 	m.array[10] = -f.z;
 
 	return m*r;
@@ -143,15 +143,15 @@ Matrix4 Matrix4::createRotation(float degrees, const Vec3 &inaxis) {
     float s = sin((float)radians(degrees));
 
 	m.array[0]  = (axis.x * axis.x) * (1.0f - c) + c;
-	m.array[1]  = (axis.y * axis.x) * (1.0f - c) + (axis.z * s);
-	m.array[2]  = (axis.z * axis.x) * (1.0f - c) - (axis.y * s);
+    m.array[4]  = (axis.y * axis.x) * (1.0f - c) + (axis.z * s);
+    m.array[8]  = (axis.z * axis.x) * (1.0f - c) - (axis.y * s);
 
-	m.array[4]  = (axis.x * axis.y) * (1.0f - c) - (axis.z * s);
+    m.array[1]  = (axis.x * axis.y) * (1.0f - c) - (axis.z * s);
 	m.array[5]  = (axis.y * axis.y) * (1.0f - c) + c;
-	m.array[6]  = (axis.z * axis.y) * (1.0f - c) + (axis.x * s);
+    m.array[9]  = (axis.z * axis.y) * (1.0f - c) + (axis.x * s);
 
-	m.array[8]  = (axis.x * axis.z) * (1.0f - c) + (axis.y * s);
-	m.array[9]  = (axis.y * axis.z) * (1.0f - c) - (axis.x * s);
+    m.array[2]  = (axis.x * axis.z) * (1.0f - c) + (axis.y * s);
+    m.array[6]  = (axis.y * axis.z) * (1.0f - c) - (axis.x * s);
 	m.array[10] = (axis.z * axis.z) * (1.0f - c) + c;
 
 	return m;
@@ -170,9 +170,9 @@ Matrix4 Matrix4::createScale(const Vec3 &scale) {
 Matrix4 Matrix4::createTranslation(const Vec3 &translation) {
 	Matrix4 m;
 
-	m.array[12] = translation.x;
-	m.array[13] = translation.y;
-	m.array[14] = translation.z;	
+    m.array[3] = translation.x;
+    m.array[7] = translation.y;
+    m.array[11] = translation.z;
 
 	return m;
 }
