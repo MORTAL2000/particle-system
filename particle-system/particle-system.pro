@@ -32,11 +32,12 @@ HEADERS += \
     src/renderframework.h \
     src/matrixstack.h \
     src/shader.h \
-    src/bufferattributes.h \
     src/scene.h \
     src/scenenode.h \
     src/modelnode.h \
-    src/mesh.h
+    src/mesh.h \
+    src/shadermanager.h \
+    src/bufferattribute.h
 
 SOURCES += \
     src/app.cpp \
@@ -51,4 +52,5 @@ SOURCES += \
     src/scene.cpp \
     src/scenenode.cpp \
     src/modelnode.cpp \
-    src/mesh.cpp
+    src/mesh.cpp \
+    src/shadermanager.cpp

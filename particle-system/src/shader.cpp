@@ -1,8 +1,11 @@
 #include "shader.h"
 
-Shader::Shader(string shaderName) : name(shaderName) {}
+Shader::Shader(string shaderName) : name(shaderName)
+{
+    linked = false;
+}
 
-void Shader::init() {
+void Shader::init(const map<string, BufferAttribute>& attributes) {
     program = glCreateProgram();
 
     string fragName = name + string(".frag");
@@ -15,7 +18,7 @@ void Shader::init() {
     glAttachShader(program, fragment);
 
     // must be done before linking
-    setDefaultAttributes();
+    setDefaultAttributes(attributes);
 
     link();
 }
@@ -62,13 +65,22 @@ void Shader::link() {
     if(!code) {
         throw runtime_error("Link shader failure (" + name + ")");
     }
+    linked = true;
 }
 
-void Shader::setDefaultAttributes() {
-    glBindAttribLocation(program, VERTEX_BUFFER, "position");
-    glBindAttribLocation(program, TEXTURE_BUFFER, "uv");
-    glBindAttribLocation(program, COLOUR_BUFFER, "colour");
-    glBindAttribLocation(program, NORMAL_BUFFER, "normal");
+void Shader::setAttribute(BufferAttribute attribute, const string &name) {
+    if(!linked) {
+        glBindAttribLocation(program, attribute, name.c_str());
+    } else {
+        throw logic_error("Trying to bind attribute after linking");
+    }
+}
+
+void Shader::setDefaultAttributes(const map<string, BufferAttribute>& attributes) {
+    map<string, BufferAttribute>::const_iterator it;
+    for(it = attributes.begin(); it != attributes.end(); ++it) {
+        glBindAttribLocation(program, it->second, it->first.c_str());
+    }
 }
 
 void Shader::loadShaderSource(const string& path, string* into) const {

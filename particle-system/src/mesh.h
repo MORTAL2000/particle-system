@@ -3,7 +3,7 @@
 
 #include "gl3.h"
 #include "shader.h"
-#include "bufferattributes.h"
+#include "bufferattribute.h"
 
 class Mesh
 {

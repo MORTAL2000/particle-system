@@ -1,7 +1,7 @@
-#ifndef BUFFERATTRIBUTES_H
-#define BUFFERATTRIBUTES_H
+#ifndef BUFFERATTRIBUTE_H
+#define BUFFERATTRIBUTE_H
 
-enum BufferAttributes {
+enum BufferAttribute {
     VERTEX_BUFFER,
     COLOUR_BUFFER,
     NORMAL_BUFFER,
@@ -10,4 +10,4 @@ enum BufferAttributes {
     BUFFER_COUNT
 };
 
-#endif // BUFFERATTRIBUTES_H
+#endif // BUFFERATTRIBUTE_H

@@ -14,7 +14,7 @@
 #include "math/vec2.h"
 #include "math/vec3.h"
 #include "math/vec4.h"
-#include "bufferattributes.h"
+#include "bufferattribute.h"
 
 using namespace std;
 
@@ -24,7 +24,7 @@ public:
     ~Shader(void);
 
     GLuint programId() const;
-    void init();
+    void init(const map<string, BufferAttribute>& attributes);
     string getName() const;
     bool isInUse() const;
     void use() const;
@@ -38,17 +38,19 @@ public:
     void sendUniform(string name, const Vec3& vec) const;
     void sendUniform(string name, const Vec4& vec) const;
 
+    void setAttribute(BufferAttribute attribute, const string& name);
+
 private:
     void link();
     GLuint createShader(GLenum type, const string& file);
     void loadShaderSource(const string& file, string* into) const;
-    void setDefaultAttributes();
+    void setDefaultAttributes(const map<string, BufferAttribute>& attributes);
     GLint uniform(string uniformName) const;
 
     GLuint fragment;
     GLuint vertex;
     GLuint program;
-
+    bool linked;
     string name;
 };
 
