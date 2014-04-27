@@ -35,7 +35,7 @@ void ShaderManager::addShader(Shader* shader, const string& name)
 
 Shader* ShaderManager::getShader(const string& shaderName) const
 {
-    map<string, Shader*>::iterator it = shaders.find(shaderName);
+    map<string, Shader*>::const_iterator it = shaders.find(shaderName);
     if(it == shaders.end()) {
         return NULL;
     } else {

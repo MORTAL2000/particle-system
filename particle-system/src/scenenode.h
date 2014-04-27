@@ -8,7 +8,7 @@ class SceneNode
 	public:
 		SceneNode();
 		SceneNode(Vec4 position, Quaternion orientation);
-		virtual ~SceneNode();
+        virtual ~SceneNode();
 
 		// Position
 		void setPosition(Vec4 position);
@@ -19,8 +19,8 @@ class SceneNode
 		Quaternion getOrientation();
 
 	protected:
-		virtual Matrix4 getRotationMatrix() = 0;
-		virtual Matrix4 getTranslationMatrix() = 0;
+        virtual Matrix4 getRotationMatrix() = 0;
+        virtual Matrix4 getTranslationMatrix() = 0;
 
 	private:
 		Vec4 position;

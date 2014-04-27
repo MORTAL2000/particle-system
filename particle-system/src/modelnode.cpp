@@ -24,6 +24,11 @@ Matrix4 ModelNode::getTransform() const
     return getTranslationMatrix() * getRotationMatrix() * getScalingMatrix();
 }
 
+void ModelNode::setScale(const Vec3& scale)
+{
+    this->scale = scale;
+}
+
 void ModelNode::setVisible(bool visible)
 {
     this->visible = visible;
