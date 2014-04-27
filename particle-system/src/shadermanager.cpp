@@ -28,16 +28,17 @@ void ShaderManager::addShader(const string& shaderName)
 
 void ShaderManager::addShader(Shader* shader, const string& name)
 {
-    if(getShader(name) == NULL) {
-        shaders.insert(pair<string, Shader*>(name, shader));
-    }
+    Shader *shdr = getShader(name);
+    assert(shdr == NULL);
+    shaders.insert(pair<string, Shader*>(name, shader));
 }
 
 Shader* ShaderManager::getShader(const string& shaderName) const
 {
-    Shader* shader = shaders.find(shaderName)->second;
-    if(shader == NULL) {
-        throw new runtime_error("Didn't found shader " + shaderName + " in the shader library");
+    map<string, Shader*>::iterator it = shaders.find(shaderName);
+    if(it == shaders.end()) {
+        return NULL;
+    } else {
+        return it->second;
     }
-    return shader;
 }
