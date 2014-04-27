@@ -2,7 +2,7 @@
 
 App::App()
 {
-    scene = new Scene();
+    scene = new Scene(NULL);
     renderer = new Renderer(scene);
 }
 

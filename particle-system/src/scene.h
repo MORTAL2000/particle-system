@@ -2,17 +2,23 @@
 #define SCENE_H
 
 #include <vector>
+
 #include "scenenode.h"
+#include "camera.h"
 
 using namespace std;
 
 class Scene
 {
-public:
-    Scene();
+private:
     vector<SceneNode*> nodes;
+    Camera* camera;
+public:
+    Scene(Camera* camera);
+    ~Scene();
 
-    // TODO : add / removal / camera
+    void addNode(SceneNode* node);
+    Camera* getCamera();
 
     vector<SceneNode*>::iterator begin();
     vector<SceneNode*>::iterator end();
