@@ -17,12 +17,10 @@ ModelNode::ModelNode(RenderFramework* framework, Mesh* mesh, Vec3 position, Quat
     this->scale = Vec3(1.0f);
 }
 
-void ModelNode::sendDefaultUniforms()
+void ModelNode::sendDefaultUniforms(Shader *material)
 {
-    Shader *mat = mesh->getMaterial();
-
-    mat->sendUniform("mvp", framework->getMVP());
-    mat->sendUniform("time", framework->getTime());
+    material->sendUniform("mvp", framework->getMVP());
+    material->sendUniform("time", framework->getTime());
 }
 
 Matrix4 ModelNode::getScalingMatrix() const
@@ -64,14 +62,18 @@ void ModelNode::visit()
 
     Shader *mat = mesh->getMaterial();
 
+    if(mat == NULL) {
+        mat = framework->getShaderManager()->getShader("default");
+    }
+
     // use current shader
     mat->use();
 
     // send the default uniforms
-    sendDefaultUniforms();
+    sendDefaultUniforms(mat);
 
     // inner send uniforms
-    sendUniforms();
+    sendUniforms(mat);
 
     // draw the mesh
     mesh->draw();

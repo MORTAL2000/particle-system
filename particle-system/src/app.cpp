@@ -3,10 +3,12 @@
 App::App()
 {
     scene = new Scene(NULL);
-    renderer = new Renderer(scene);
+    shaderManager = new ShaderManager();
+    renderer = new Renderer(scene, shaderManager);
 }
 
 App::~App() {
+    delete shaderManager;
     delete renderer;
     delete scene;
 }

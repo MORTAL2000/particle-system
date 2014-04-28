@@ -24,6 +24,7 @@ private:
     GLuint vbo;
 
 public:
+    Mesh();
     Mesh(Shader* material);
     ~Mesh();
 

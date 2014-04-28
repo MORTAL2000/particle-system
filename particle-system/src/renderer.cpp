@@ -1,7 +1,8 @@
 #include "renderer.h"
 
-Renderer::Renderer(Scene *scene)
+Renderer::Renderer(Scene *scene, ShaderManager* shaderManager)
 {
+    this->shaderManager = shaderManager;
     this->scene = scene;
 }
 
@@ -18,6 +19,11 @@ void Renderer::pushMatrix(const Matrix4& mat)
 void Renderer::popMatrix()
 {
     stack.pop();
+}
+
+ShaderManager* Renderer::getShaderManager() const
+{
+    return shaderManager;
 }
 
 Matrix4 Renderer::getMVP() const

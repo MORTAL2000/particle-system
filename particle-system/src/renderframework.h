@@ -2,6 +2,7 @@
 #define RENDERFRAMEWORK_H
 
 #include "math/matrix4.h"
+#include "shadermanager.h"
 
 class RenderFramework
 {
@@ -17,6 +18,8 @@ public:
     virtual Matrix4 getMVP() const = 0;
 
     virtual float getTime() const = 0;
+
+    virtual ShaderManager* getShaderManager() const = 0;
 };
 
 #endif // RENDERFRAMEWORK_H

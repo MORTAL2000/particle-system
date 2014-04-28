@@ -6,6 +6,7 @@
 #include <iostream>
 #include "renderer.h"
 #include "scene.h"
+#include "shadermanager.h"
 
 class App : public QGLWidget
 {
@@ -13,6 +14,7 @@ private:
     Renderer* renderer;
     Scene* scene;
     QElapsedTimer timer;
+    ShaderManager* shaderManager;
 public:
     App();
     ~App();

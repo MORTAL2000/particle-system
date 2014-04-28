@@ -1,5 +1,11 @@
 #include "mesh.h"
 
+Mesh::Mesh()
+{
+    this->vbo = 0;
+    this->vao = 0;
+}
+
 Mesh::Mesh(Shader* material)
 {
     this->material = material;

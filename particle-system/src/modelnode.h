@@ -4,6 +4,7 @@
 #include <vector>
 #include "scenenode.h"
 #include "renderframework.h"
+#include "shadermanager.h"
 #include "mesh.h"
 
 class ModelNode : public SceneNode
@@ -17,8 +18,8 @@ private:
     Matrix4 getScalingMatrix() const;
 
 protected:
-    virtual void sendUniforms() = 0;
-    void sendDefaultUniforms();
+    virtual void sendUniforms(Shader* material) = 0;
+    void sendDefaultUniforms(Shader* material);
 
 public:
     ModelNode(RenderFramework *framework, Mesh *mesh);
