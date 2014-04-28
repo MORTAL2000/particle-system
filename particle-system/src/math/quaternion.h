@@ -22,6 +22,8 @@ public:
     Quaternion conjugate();
     Quaternion& normalize();
     Quaternion inverse();
+	float dotProduct(const Quaternion &q) const;
+	Quaternion slerp(const Quaternion &q1, const Quaternion &q2, float t);
     float length();
     void setToAngle(float radAngle, Vec3 axis);
 

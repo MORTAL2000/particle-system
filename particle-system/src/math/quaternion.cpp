@@ -61,7 +61,39 @@ Quaternion& Quaternion::normalize() {
 
 Quaternion Quaternion::inverse() {
     float l = length();
-    return conjugate().divideByScalar(l*l);
+	return conjugate().divideByScalar(l*l);
+}
+
+float Quaternion::dotProduct(const Quaternion &q) const
+{
+	return x*q.x + y*q.y + z*q.z + w*q.w;
+}
+
+Quaternion Quaternion::slerp(const Quaternion &q1, const Quaternion &q2, float t)
+{
+	Quaternion qr;
+	float theta, sint, sintt, sinott, coeffq1, coeffq2;
+
+	// algorithm adapted from Shoemake's paper
+	t=t/2.0;
+
+	theta = (float) acos(q1.dotProduct(q2));
+	if (theta<0.0) theta=-theta;
+
+	sint = (float) sin(theta);
+	sintt = (float) sin(t*theta);
+	sinott = (float) sin((1-t)*theta);
+	coeffq1 = sinott/sint;
+	coeffq2 = sintt/sint;
+
+	qr.x = coeffq1*q1.x + coeffq2*q2.x;
+	qr.y = coeffq1*q1.y + coeffq2*q2.y;
+	qr.z = coeffq1*q1.z + coeffq2*q2.z;
+	qr.w = coeffq1*q1.w + coeffq2*q2.w;
+
+	qr.normalize();
+
+	return qr;
 }
 
 float Quaternion::length() {
