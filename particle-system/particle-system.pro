@@ -15,6 +15,11 @@ macx {
     LIBS += -L"../lib/glew-osx/lib"
 }
 
+unix {
+    INCLUDEPATH = src "../lib/glew-unix/include"
+    LIBS += -L"../lib/glew-unix/lib" -lGLEW
+}
+
 DESTDIR = ../build/
 OBJECTS_DIR = ../build/obj
 

@@ -2,6 +2,12 @@
 
 App::App()
 {
+    glInit();
+    glewExperimental = GL_TRUE;
+    GLenum err = glewInit();
+    if (err != GLEW_OK)
+        cout<<"glewInit failed, aborting. error: "<< glewGetErrorString(err) << endl;
+
     scene = new Scene(NULL);
     shaderManager = new ShaderManager();
     renderer = new Renderer(scene, shaderManager);

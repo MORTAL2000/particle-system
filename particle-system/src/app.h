@@ -1,6 +1,8 @@
 #ifndef APP_H
 #define APP_H
 
+#include "GL/glew.h"
+
 #include <QGLWidget>
 #include <QElapsedTimer>
 #include <iostream>

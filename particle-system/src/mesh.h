@@ -3,7 +3,6 @@
 
 #include <vector>
 
-#include "gl3.h"
 #include "shader.h"
 #include "bufferattribute.h"
 
