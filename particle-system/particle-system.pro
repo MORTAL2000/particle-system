@@ -10,14 +10,14 @@ win32 {
     LIBS += -L"..\lib\glew-mingw\lib" -lglew32
 }
 
-macx {
-    INCLUDEPATH = src "../lib/glew-osx/include"
-    LIBS += -L"../lib/glew-osx/lib"
+unix:!macx {
+	INCLUDEPATH = src "../lib/glew-unix/include"
+	LIBS += -L"../lib/glew-unix/lib" -lGLEW
 }
 
-unix {
-    INCLUDEPATH = src "../lib/glew-unix/include"
-    LIBS += -L"../lib/glew-unix/lib" -lGLEW
+macx {
+	INCLUDEPATH = src "../lib/glew-osx/include"
+	LIBS += -L"../lib/glew-osx/lib" -lGLEW
 }
 
 DESTDIR = ../build/
