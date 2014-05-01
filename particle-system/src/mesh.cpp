@@ -1,16 +1,12 @@
 #include "mesh.h"
 
-Mesh::Mesh()
-{
-    this->vbo = 0;
-    this->vao = 0;
-}
-
-Mesh::Mesh(Shader* material)
+Mesh::Mesh(Shader* material, GLenum primitiveType)
 {
     this->material = material;
     this->vbo = 0;
     this->vao = 0;
+    this->primitiveType = primitiveType;
+    this->vertexDataSize = 0;
 }
 
 Mesh::~Mesh()
@@ -27,8 +23,7 @@ Shader* Mesh::getMaterial()
 void Mesh::draw() {
     glBindVertexArray(vao);
 
-    // TODO : draw call
-    // glDrawArrays(type, 0, count);
+    glDrawArrays(primitiveType, 0, vertexDataSize);
 
     glBindVertexArray(0);
 }
@@ -36,6 +31,8 @@ void Mesh::draw() {
 void Mesh::createInterleavedBufferData(const vector<VertexBufferDataInfo>& dataInfo,
                                        void* data, GLsizeiptr totalDataSize, GLenum usage)
 {
+    this->vertexDataSize = totalDataSize;
+
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
 

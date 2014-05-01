@@ -21,10 +21,11 @@ private:
     Shader* material;
     GLuint vao;
     GLuint vbo;
+    GLenum primitiveType;
+    GLsizeiptr vertexDataSize;
 
 public:
-    Mesh();
-    Mesh(Shader* material);
+    Mesh(Shader* material, GLenum primitiveType);
     ~Mesh();
 
     Shader* getMaterial();
