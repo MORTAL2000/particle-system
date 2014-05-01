@@ -13,6 +13,7 @@ struct VertexBufferDataInfo {
     GLsizei stride;
     int size;
     int offset;
+    GLenum dataType;
 };
 
 class Mesh
