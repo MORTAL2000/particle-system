@@ -5,9 +5,8 @@ Camera::Camera()
 }
 
 Camera::Camera(Vec3 position, Quaternion orientation, float aspectRatio, float fovAngle, float nearPlane, float farPlane)
+    : SceneNode(position, orientation)
 {
-	this->position = position;
-	this->orientation = orientation;
 	this->aspectRatio = aspectRatio;
 	this->fovAngle = fovAngle;
 	this->nearPlane = nearPlane;

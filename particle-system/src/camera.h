@@ -22,9 +22,7 @@ class Camera : public SceneNode
 		void buildProjectionMatrix();
 
 	private:
-		Matrix4 viewMatrix, projectionMatrix;
-		Vec3 position;
-		Quaternion orientation;
+        Matrix4 viewMatrix, projectionMatrix;
 		float aspectRatio, fovAngle, farPlane, nearPlane;
 };
 

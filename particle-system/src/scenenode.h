@@ -29,8 +29,6 @@ class SceneNode
         Matrix4 translationMatrix;
         Matrix4 getRotationMatrix();
         Matrix4 getTranslationMatrix();
-
-	private:
         Vec3 position;
 		Quaternion orientation;
 };
