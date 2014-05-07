@@ -23,19 +23,26 @@ void ModelNode::sendDefaultUniforms(Shader *material)
     material->sendUniform("time", framework->getTime());
 }
 
-Matrix4 ModelNode::getScalingMatrix() const
+Matrix4 ModelNode::getScalingMatrix()
 {
-    return Matrix4::createScale(scale);
+    if(needUpdate) {
+        scalingMatrix = Matrix4::createScale(scale);
+    }
+    return scalingMatrix;
 }
 
-Matrix4 ModelNode::getTransform() const
+Matrix4 ModelNode::getTransform()
 {
-    return getTranslationMatrix() * getRotationMatrix() * getScalingMatrix();
+    if(needUpdate) {
+        transform = getTranslationMatrix() * getRotationMatrix() * getScalingMatrix();
+    }
+    return transform;
 }
 
 void ModelNode::setScale(const Vec3& scale)
 {
     this->scale = scale;
+    needUpdate = true;
 }
 
 void ModelNode::setVisible(bool visible)

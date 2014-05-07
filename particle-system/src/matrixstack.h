@@ -17,7 +17,7 @@ public:
         return stack.size();
     }
 
-    void push(T mat) {
+    void push(const T& mat) {
         if(size() > 0) {
             T top = stack.back();
             stack.push_back(top * mat);

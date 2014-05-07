@@ -46,7 +46,6 @@ void Mesh::createInterleavedBufferData(const vector<VertexBufferDataInfo>& dataI
         VertexBufferDataInfo info = (*it);
         glEnableVertexAttribArray(info.attributeType);
         glVertexAttribPointer(info.attributeType, info.size, info.dataType, GL_FALSE, info.stride, BUFFER_OFFSET(info.offset));
-        glDisableVertexAttribArray(info.attributeType);
     }
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);

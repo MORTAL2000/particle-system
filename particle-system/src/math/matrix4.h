@@ -19,7 +19,7 @@ class Matrix4 {
 		Matrix4(void);
 		Matrix4(float elements[16]);
 		~Matrix4(void);
-		Matrix4& operator=(const Matrix4 &a);
+        Matrix4& operator=(const Matrix4 &a);
 
         void toZero();
         void toIdentity();

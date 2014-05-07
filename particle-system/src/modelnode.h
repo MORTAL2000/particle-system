@@ -15,7 +15,10 @@ private:
     RenderFramework *framework;
     vector<ModelNode*> children;
     Vec3 scale;
-    Matrix4 getScalingMatrix() const;
+    Matrix4 transform;
+    Matrix4 scalingMatrix;
+
+    Matrix4 getScalingMatrix();
 
 protected:
     virtual void sendUniforms(Shader* material) = 0;
@@ -29,7 +32,7 @@ public:
     void addChild(ModelNode *child);
     void visit();
     void setScale(const Vec3& scale);
-    Matrix4 getTransform() const;
+    Matrix4 getTransform();
 };
 
 #endif // MODELNODE_H

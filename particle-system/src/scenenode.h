@@ -18,9 +18,17 @@ class SceneNode
 		void setOrientation(Quaternion orientation);
 		Quaternion getOrientation();
 
+        void rotateX(float angle);
+        void rotateY(float angle);
+        void rotateZ(float angle);
+        void rotate(float angle, const Vec3& axis);
+
 	protected:
-        Matrix4 getRotationMatrix() const;
-        Matrix4 getTranslationMatrix() const;
+        bool needUpdate;
+        Matrix4 rotationMatrix;
+        Matrix4 translationMatrix;
+        Matrix4 getRotationMatrix();
+        Matrix4 getTranslationMatrix();
 
 	private:
         Vec3 position;
