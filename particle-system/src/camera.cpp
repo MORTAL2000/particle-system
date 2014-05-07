@@ -20,30 +20,37 @@ Camera::~Camera()
 
 Matrix4 Camera::getViewMatrix()
 {
-	buildViewMatrix();
+    if(needUpdate) {
+        buildViewMatrix();
+    }
 	return this->viewMatrix;
 }
 
 Matrix4 Camera::getProjectionMatrix()
 {
-	buildProjectionMatrix();
+    if(needUpdate) {
+        buildProjectionMatrix();
+    }
 	return this->projectionMatrix;
 }
 
 void Camera::setAspectRatio(float ratio)
 {
 	this->aspectRatio = ratio;
+    needUpdate = true;
 }
 
 void Camera::setFOV(float angle)
 {
 	this->fovAngle = angle;
+    needUpdate = true;
 }
 
 void Camera::setPlanes(float near, float far)
 {
 	this->nearPlane = near;
 	this->farPlane = far;
+    needUpdate = true;
 }
 
 void Camera::lookAt(Vec3 direction)
@@ -51,6 +58,7 @@ void Camera::lookAt(Vec3 direction)
 	orientation.x = direction.x;
 	orientation.y = direction.y;
 	orientation.z = direction.z;
+    needUpdate = true;
 }
 
 void Camera::buildViewMatrix()
