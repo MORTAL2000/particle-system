@@ -80,6 +80,8 @@ Vec3 Camera::forward() {
 void Camera::buildViewMatrix()
 {
     Matrix4 view = Matrix4::createView(up(), right(), forward());
+    position = view * position;
+    needUpdate = true;
     viewMatrix = view * getTranslationMatrix();
 }
 
