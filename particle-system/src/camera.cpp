@@ -85,6 +85,7 @@ void Camera::buildViewMatrix()
 
 void Camera::buildProjectionMatrix()
 {
+    float r, l, t, b, theta;
     theta = (M_PI * fovAngle / 180.0f) / 2;
     r = nearPlane * tan(theta);
     l = -r;
