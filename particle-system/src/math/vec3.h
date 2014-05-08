@@ -4,6 +4,7 @@
 #include <cmath>
 #include <iostream>
 #include "mathshelpers.h"
+#include "vec4.h"
 
 using std::ostream;
 
@@ -19,6 +20,7 @@ class Vec3 {
         Vec3(float x,float y,float z);
         Vec3(float val);
         Vec3(const Vec3& v);
+        Vec3(const Vec4& v);
         Vec3(const Vec3& from,const Vec3& to);
         
         Vec3& operator=(const Vec3& v);

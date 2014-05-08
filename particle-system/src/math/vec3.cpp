@@ -24,6 +24,12 @@ Vec3::Vec3(const Vec3& v) {
     z = v.z;
 }
 
+Vec3::Vec3(const Vec4& v) {
+    x = v.x;
+    y = v.y;
+    z = v.z;
+}
+
 Vec3::Vec3(const Vec3& from,const Vec3& to) {
     x = to.x - from.x;
     y = to.y - from.y;

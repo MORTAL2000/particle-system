@@ -61,7 +61,7 @@ void ModelNode::visit()
         return;
 
     framework->pushMatrix(getTransform());
-    cout << "visit" << endl;
+
     vector<ModelNode*>::iterator it;
     for(it = children.begin(); it != children.end(); ++it) {
         (*it)->visit();

@@ -61,6 +61,21 @@ void Camera::lookAt(Vec3 direction)
     needUpdate = true;
 }
 
+Vec3 Camera::up() {
+    Vec3 up = Matrix3::getInverse(getRotationMatrix()) * Vec3(0, 1, 0);
+    return up;
+}
+
+Vec3 Camera::right() {
+    Vec3 right = Matrix3::getInverse(getRotationMatrix()) * Vec3(1, 0, 0);
+    return right;
+}
+
+Vec3 Camera::forward() {
+    Vec3 forward = Matrix3::getInverse(getRotationMatrix()) * Vec3(0, 0, -1);
+    return forward;
+}
+
 void Camera::buildViewMatrix()
 {
 	// Vertical axis of the camera

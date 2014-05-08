@@ -60,7 +60,7 @@ class Matrix4 {
 
             temp =  v.x * array[12] + v.y * array[13] + v.z * array[14] + array[15];
 
-			vec.x = vec.x / temp;
+            vec.x = vec.x / temp;
 			vec.y = vec.y / temp;
 			vec.z = vec.z / temp;
 

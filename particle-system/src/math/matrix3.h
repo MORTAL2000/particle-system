@@ -23,6 +23,13 @@ class Matrix3 {
         static Matrix3 identity();
         static Matrix3 getInverse(const Matrix4& m);
 
+        inline Vec3 operator*(const Vec3 &v) const {
+            Vec3 vec;
+            vec.x = v.x * array[0] + v.y * array[1] + v.z * array[2];
+            vec.y = v.x * array[3] + v.y * array[4] + v.z * array[5];
+            vec.z = v.x * array[6] + v.y * array[7] + v.z * array[8];
+            return vec;
+        }
 
         inline friend std::ostream& operator<<(std::ostream& o, const Matrix3& m) {
             cout << "\t" << m.array[0]  << " " << m.array[1]  << " " << m.array[2]  << std::endl;

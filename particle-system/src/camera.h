@@ -3,6 +3,7 @@
 
 #include "scenenode.h"
 #include "math/matrix4.h"
+#include "math/matrix3.h"
 
 class Camera : public SceneNode
 {
@@ -16,6 +17,9 @@ class Camera : public SceneNode
 		void setFOV(float angle);
 		void setPlanes(float near, float far);
 		void lookAt(Vec3 direction);
+        Vec3 up();
+        Vec3 right();
+        Vec3 forward();
 
 	protected:
 		void buildViewMatrix();
