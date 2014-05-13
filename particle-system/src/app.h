@@ -4,6 +4,7 @@
 #include "GL/glew.h"
 
 #include <QGLWidget>
+#include <QMouseEvent>
 #include <QElapsedTimer>
 #include <iostream>
 #include "renderer.h"
@@ -21,7 +22,9 @@ public:
     App();
     ~App();
     void paintGL();
+    void resizeGL(int w, int h);
     void initializeGL();
+    void mouseMoveEvent(QMouseEvent *event);
 };
 
 #endif // APP_H

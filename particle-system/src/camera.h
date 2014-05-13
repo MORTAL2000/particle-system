@@ -8,8 +8,13 @@
 class Camera : public SceneNode
 {
     public:
-        Camera();
-		Camera(Vec3 position, Quaternion orientation, float aspectRatio, float fovAngle, float nearPlane, float farPlane);
+
+        Camera(Vec3 position,
+               Quaternion orientation,
+               float aspectRatio,
+               float fovAngle = 50.0f,
+               float nearPlane = 0.01f,
+               float farPlane = 1000.0f);
 		~Camera();
 		Matrix4 getViewMatrix();
 		Matrix4 getProjectionMatrix();

@@ -1,9 +1,5 @@
 #include "camera.h"
 
-Camera::Camera()
-{
-}
-
 Camera::Camera(Vec3 position, Quaternion orientation, float aspectRatio, float fovAngle, float nearPlane, float farPlane)
     : SceneNode(position, orientation)
 {
