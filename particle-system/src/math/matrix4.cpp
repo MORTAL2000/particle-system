@@ -76,6 +76,24 @@ Matrix4 Matrix4::createOrthographic(float znear, float zfar,float right, float l
 	return m;
 }
 
+Matrix4 Matrix4::createView(const Vec3& up, const Vec3& right, const Vec3& forward) {
+    Matrix4 m;
+
+    m.array[0] = right.x;
+    m.array[4] = right.y;
+    m.array[8] = right.z;
+
+    m.array[1] = up.x;
+    m.array[5] = up.y;
+    m.array[9] = up.z;
+
+    m.array[2] = -forward.x;
+    m.array[6] = -forward.y;
+    m.array[10] = -forward.z;
+
+    return m;
+}
+
 Matrix4 Matrix4::createLookAt(const Vec3 &from, const Vec3 &lookingAt) {
     Matrix4 r = Matrix4::createTranslation(-from);
 	Matrix4 m;
@@ -97,7 +115,7 @@ Matrix4 Matrix4::createLookAt(const Vec3 &from, const Vec3 &lookingAt) {
 
     m.array[8]  = -f.x;
     m.array[9]  = -f.y;
-	m.array[10] = -f.z;
+    m.array[10] = -f.z;
 
 	return m*r;
 }

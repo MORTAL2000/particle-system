@@ -31,6 +31,7 @@ class Matrix4 {
         static Matrix4 createOrthographic(float znear, float zfar,float right, float left, float top, float bottom);
         static Matrix4 createLookAt(const Vec3 &from, const Vec3 &lookingAt);
         static Matrix4 createRotation(const Quaternion &q);
+        static Matrix4 createView(const Vec3& up, const Vec3& right, const Vec3& forward);
 
         static Matrix4 identity();
 
