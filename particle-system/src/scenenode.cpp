@@ -1,24 +1,17 @@
 #include "scenenode.h"
 
 SceneNode::SceneNode()
-{
-    this->needUpdate = true;
-}
+{}
 
 SceneNode::SceneNode(Vec3 position, Quaternion orientation) : position(position), orientation(orientation)
-{
-    this->needUpdate = true;
-}
+{}
 
 SceneNode::~SceneNode()
-{
-
-}
+{}
 
 void SceneNode::setPosition(Vec3 position)
 {
 	this->position = position;
-    this->needUpdate = true;
 }
 
 Vec3 SceneNode::getPosition()
@@ -29,7 +22,6 @@ Vec3 SceneNode::getPosition()
 void SceneNode::rotate(float angle, const Vec3& axis) {
     Quaternion q(angle, axis);
     orientation = orientation * q;
-    needUpdate = true;
 }
 
 void SceneNode::rotateX(float angle) {
@@ -49,8 +41,7 @@ void SceneNode::rotateZ(float angle) {
 
 void SceneNode::setOrientation(Quaternion orientation)
 {
-	this->orientation = orientation;
-    this->needUpdate = true;
+    this->orientation = orientation;
 }
 
 Quaternion SceneNode::getOrientation()
@@ -60,16 +51,12 @@ Quaternion SceneNode::getOrientation()
 
 Matrix4 SceneNode::getRotationMatrix()
 {
-    if(needUpdate) {
-        rotationMatrix = Matrix4::createRotation(orientation);
-    }
+    rotationMatrix = Matrix4::createRotation(orientation);
     return rotationMatrix;
 }
 
 Matrix4 SceneNode::getTranslationMatrix()
 {
-    if(needUpdate) {
-        translationMatrix = Matrix4::createTranslation(-position);
-    }
+    translationMatrix = Matrix4::createTranslation(-position);
     return translationMatrix;
 }

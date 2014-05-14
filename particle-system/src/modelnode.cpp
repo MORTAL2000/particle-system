@@ -25,24 +25,19 @@ void ModelNode::sendDefaultUniforms(Shader *material)
 
 Matrix4 ModelNode::getScalingMatrix()
 {
-    if(needUpdate) {
-        scalingMatrix = Matrix4::createScale(scale);
-    }
+    scalingMatrix = Matrix4::createScale(scale);
     return scalingMatrix;
 }
 
 Matrix4 ModelNode::getTransform()
 {
-    if(needUpdate) {
-        transform = getTranslationMatrix() * getRotationMatrix() * getScalingMatrix();
-    }
+    transform = getTranslationMatrix() * getRotationMatrix() * getScalingMatrix();
     return transform;
 }
 
 void ModelNode::setScale(const Vec3& scale)
 {
     this->scale = scale;
-    needUpdate = true;
 }
 
 void ModelNode::setVisible(bool visible)

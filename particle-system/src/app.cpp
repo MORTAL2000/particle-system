@@ -9,7 +9,7 @@ App::App()
         cout<<"glewInit failed, aborting. error: "<< glewGetErrorString(err) << endl;
 
     Vec3 cameraPosition;
-    Quaternion cameraOrientation;
+    Quaternion cameraOrientation(0, Vec3::up());
     float aspect = width() / height();
     Camera *camera = new Camera(cameraPosition, cameraOrientation, aspect);
 

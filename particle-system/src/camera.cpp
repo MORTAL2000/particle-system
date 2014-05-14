@@ -16,37 +16,30 @@ Camera::~Camera()
 
 Matrix4 Camera::getViewMatrix()
 {
-    if(needUpdate) {
-        buildViewMatrix();
-    }
+    buildViewMatrix();
 	return this->viewMatrix;
 }
 
 Matrix4 Camera::getProjectionMatrix()
 {
-    if(needUpdate) {
-        buildProjectionMatrix();
-    }
+    buildProjectionMatrix();
 	return this->projectionMatrix;
 }
 
 void Camera::setAspectRatio(float ratio)
 {
-	this->aspectRatio = ratio;
-    needUpdate = true;
+    this->aspectRatio = ratio;
 }
 
 void Camera::setFOV(float angle)
 {
-	this->fovAngle = angle;
-    needUpdate = true;
+    this->fovAngle = angle;
 }
 
 void Camera::setPlanes(float near, float far)
 {
 	this->nearPlane = near;
-	this->farPlane = far;
-    needUpdate = true;
+    this->farPlane = far;
 }
 
 void Camera::lookAt(Vec3 direction)
@@ -54,8 +47,7 @@ void Camera::lookAt(Vec3 direction)
     // TODO : to remove
 	orientation.x = direction.x;
 	orientation.y = direction.y;
-	orientation.z = direction.z;
-    needUpdate = true;
+    orientation.z = direction.z;
 }
 
 Vec3 Camera::up() {

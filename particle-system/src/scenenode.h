@@ -23,8 +23,7 @@ class SceneNode
         void rotateZ(float angle);
         void rotate(float angle, const Vec3& axis);
 
-	protected:
-        bool needUpdate;
+    protected:
         Matrix4 rotationMatrix;
         Matrix4 translationMatrix;
         Matrix4 getRotationMatrix();
