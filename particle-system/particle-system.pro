@@ -61,3 +61,7 @@ SOURCES += \
     src/mesh.cpp \
 	src/shadermanager.cpp \
 	src/camera.cpp
+
+OTHER_FILES += \
+    ../build/shaders/default.frag \
+    ../build/shaders/default.vert

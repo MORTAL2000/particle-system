@@ -12,6 +12,7 @@
 
 #build
 build/*
+!build/shaders
 
 #os file
 .DS_Store
