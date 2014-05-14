@@ -43,7 +43,8 @@ HEADERS += \
     src/mesh.h \
     src/shadermanager.h \
 	src/bufferattribute.h \
-	src/camera.h
+	src/camera.h \
+    src/emitternode.h
 
 SOURCES += \
     src/app.cpp \
@@ -60,7 +61,8 @@ SOURCES += \
 	src/modelnode.cpp \
     src/mesh.cpp \
 	src/shadermanager.cpp \
-	src/camera.cpp
+	src/camera.cpp \
+    src/emitternode.cpp
 
 OTHER_FILES += \
     ../build/shaders/default.frag \
