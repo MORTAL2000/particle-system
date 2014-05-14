@@ -65,3 +65,10 @@ SOURCES += \
 OTHER_FILES += \
     ../build/shaders/default.frag \
     ../build/shaders/default.vert
+
+
+macx {
+        MediaFiles.files = ../build/shaders/default.vert ../build/shaders/default.frag
+        MediaFiles.path = Contents/MacOS/shaders
+        QMAKE_BUNDLE_DATA += MediaFiles
+}

@@ -8,8 +8,8 @@ Shader::Shader(string shaderName) : name(shaderName)
 void Shader::init(const map<string, BufferAttribute>& attributes) {
     program = glCreateProgram();
 
-    string fragName = name + string(".frag");
-    string vertName = name + string(".vert");
+    string fragName = SHADER_PATH + name + string(".frag");
+    string vertName = SHADER_PATH + name + string(".vert");
 
     vertex = createShader(GL_VERTEX_SHADER, vertName);
     fragment = createShader(GL_FRAGMENT_SHADER, fragName);

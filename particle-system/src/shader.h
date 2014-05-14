@@ -16,6 +16,8 @@
 #include "math/vec4.h"
 #include "bufferattribute.h"
 
+#define SHADER_PATH string("./shaders/")
+
 using namespace std;
 
 class Shader {
