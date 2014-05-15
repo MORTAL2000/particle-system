@@ -21,6 +21,9 @@ class SceneNode
         void rotateX(float angle);
         void rotateY(float angle);
         void rotateZ(float angle);
+        void translateX(float value);
+        void translateY(float value);
+        void translateZ(float value);
         void rotate(float angle, const Vec3& axis);
 
     protected:

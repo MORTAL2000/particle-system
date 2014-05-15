@@ -39,6 +39,18 @@ void SceneNode::rotateZ(float angle) {
     rotate(angle, zAxis);
 }
 
+void SceneNode::translateX(float value) {
+    translationMatrix = getTranslationMatrix() * Matrix4::createTranslation(Vec3(value, 0.0, 0.0));
+}
+
+void SceneNode::translateY(float value) {
+    translationMatrix = getTranslationMatrix() * Matrix4::createTranslation(Vec3(0.0, value, 0.0));
+}
+
+void SceneNode::translateZ(float value) {
+    translationMatrix = getTranslationMatrix() * Matrix4::createTranslation(Vec3(0.0, 0.0, value));
+}
+
 void SceneNode::setOrientation(Quaternion orientation)
 {
     this->orientation = orientation;
