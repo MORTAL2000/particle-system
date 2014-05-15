@@ -9,6 +9,7 @@ int main(int argc, char *argv[]) {
 
     QApplication app(argc, argv);
     App win;
+    win.init();
     win.show();
     return app.exec();
 }

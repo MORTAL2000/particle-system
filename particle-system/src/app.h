@@ -10,6 +10,7 @@
 #include "renderer.h"
 #include "scene.h"
 #include "shadermanager.h"
+#include "scenebuilder.h"
 
 class App : public QGLWidget
 {
@@ -18,12 +19,15 @@ private:
     Scene* scene;
     QElapsedTimer timer;
     ShaderManager* shaderManager;
+
+    void initShaders();
+    void initGlew();
+
 public:
     App();
     ~App();
 
-    void initShaders();
-    void initGlew();
+    void init();
 
     void paintGL();
     void resizeGL(int w, int h);

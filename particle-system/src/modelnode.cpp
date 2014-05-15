@@ -17,6 +17,11 @@ ModelNode::ModelNode(RenderFramework* framework, Mesh* mesh, Vec3 position, Quat
     this->scale = Vec3(1.0f);
 }
 
+ModelNode::~ModelNode()
+{
+    delete mesh;
+}
+
 void ModelNode::sendDefaultUniforms(Shader *material)
 {
     material->sendUniform("mvp", framework->getMVP());

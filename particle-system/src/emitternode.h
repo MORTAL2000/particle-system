@@ -3,10 +3,16 @@
 
 #include "modelnode.h"
 
+struct EmitterVertexData {
+    Vec3 pos;
+    Vec3 color;
+    // TODO : add other attributes
+};
+
 class EmitterNode : public ModelNode
 {
 	public:
-		EmitterNode(RenderFramework* framework, Mesh* mesh);
+        EmitterNode(RenderFramework* framework);
 
 		/**
 		 * Compute default attributes of his mesh's shader

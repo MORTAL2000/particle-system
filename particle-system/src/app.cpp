@@ -2,24 +2,29 @@
 
 App::App()
 {
-    initGlew();
-
     Quaternion cameraOrientation(0, Vec3::up());
     Camera *camera = new Camera(Vec3::zero(), cameraOrientation, width() / height());
 
     scene = new Scene(camera);
     shaderManager = new ShaderManager();
     renderer = new Renderer(scene, shaderManager);
-
-    initShaders();
-
-    setMouseTracking(true);
 }
 
 App::~App() {
     delete shaderManager;
     delete renderer;
     delete scene;
+}
+
+void App::init()
+{
+    initGlew();
+
+    initShaders();
+
+    SceneBuilder::buildScene(scene, renderer);
+
+    setMouseTracking(true);
 }
 
 void App::initGlew()
@@ -36,7 +41,7 @@ void App::initShaders()
     try {
         shaderManager->addShader("default");
     } catch(exception &e) {
-        cerr << e.what();
+        cerr << e.what() << endl;
     }
 }
 

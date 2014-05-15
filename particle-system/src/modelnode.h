@@ -11,8 +11,6 @@ class ModelNode : public SceneNode
 {
 private:
     bool visible;
-    Mesh *mesh;
-    RenderFramework *framework;
     vector<ModelNode*> children;
     Vec3 scale;
     Matrix4 transform;
@@ -24,9 +22,13 @@ protected:
     virtual void sendUniforms(Shader* material) = 0;
     void sendDefaultUniforms(Shader* material);
 
+    RenderFramework *framework;
+    Mesh *mesh;
+
 public:
     ModelNode(RenderFramework *framework, Mesh *mesh);
     ModelNode(RenderFramework* framework, Mesh* mesh, Vec3 position, Quaternion orientation);
+    ~ModelNode();
 
     void setVisible(bool visible);
     void addChild(ModelNode *child);
