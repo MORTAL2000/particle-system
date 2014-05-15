@@ -63,16 +63,7 @@ Matrix4 Matrix4::createPerspective(float znear, float zfar, float aspect, float 
 
 Matrix4 Matrix4::createOrthographic(float znear, float zfar,float right, float left, float top, float bottom) {
 	Matrix4 m;
-	m.toZero();
-
-	/*m.array[0]	 = 2.0f / (right-left);
-	m.array[5]	 = 2.0f / (top-bottom);
-	m.array[10] = -2.0f / (zfar-znear);
-
-    m.array[3]  = -(right+left) / (right-left);
-    m.array[7]  = -(top+bottom) / (top-bottom);
-    m.array[11]  = -(zfar+znear) / (zfar-znear);
-	m.array[15]  = 1.0f;*/
+    m.toZero();
 
 	m.array[0]	= (2.0f * znear) / (right - left);
 	m.array[2]	= (right + left) / (right - left);

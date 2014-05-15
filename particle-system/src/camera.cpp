@@ -1,12 +1,19 @@
 #include "camera.h"
 
-Camera::Camera(Vec3 position, Quaternion orientation, float aspectRatio, float fovAngle, float nearPlane, float farPlane)
+Camera::Camera(Vec3 position,
+               Quaternion orientation,
+               float aspectRatio,
+               float fovAngle,
+               float nearPlane,
+               float farPlane,
+               ProjectionType type)
     : SceneNode(position, orientation)
 {
 	this->aspectRatio = aspectRatio;
 	this->fovAngle = fovAngle;
 	this->nearPlane = nearPlane;
 	this->farPlane = farPlane;
+    this->projectionType = type;
 }
 
 Camera::~Camera()
@@ -42,14 +49,6 @@ void Camera::setPlanes(float near, float far)
     this->farPlane = far;
 }
 
-void Camera::lookAt(Vec3 direction)
-{
-    // TODO : to remove
-	orientation.x = direction.x;
-	orientation.y = direction.y;
-    orientation.z = direction.z;
-}
-
 Vec3 Camera::up() {
     Vec3 up = Matrix3::getInverse(getRotationMatrix()) * Vec3(0, 1, 0);
     return up;
@@ -75,32 +74,20 @@ void Camera::buildViewMatrix()
 
 void Camera::buildProjectionMatrix()
 {
-    float r, l, t, b, theta;
-    theta = (M_PI * fovAngle / 180.0f) / 2;
-    r = nearPlane * tan(theta);
-    l = -r;
-    t = r * aspectRatio;
-    b = -t;
+    switch(projectionType) {
+        case Orthographic: {
+            float r, l, t, b, theta;
+            theta = (M_PI * fovAngle / 180.0f) / 2;
+            r = nearPlane * tan(theta);
+            l = -r;
+            t = r * aspectRatio;
+            b = -t;
 
-    projectionMatrix = Matrix4::createOrthographic(nearPlane, farPlane, r, l, t, b);
-
-    /*float r, l, t, b, theta, width, height, depth;
-
-	theta = (M_PI * fovAngle / 180.0f) / 2;
-	r = nearPlane * tan(theta);
-	l = -r;
-	t = r * aspectRatio;
-	b = -t;
-	width = r - l;
-	height = t - b;
-	depth = farPlane - nearPlane;
-
-	projectionMatrix.toZero();
-	projectionMatrix.array[0] = (2 * nearPlane) / width;
-	projectionMatrix.array[2] = (r + l) / width;
-	projectionMatrix.array[5] = (2 * nearPlane) / height;
-	projectionMatrix.array[6] = (t + b) / height;
-	projectionMatrix.array[10] = - (farPlane + nearPlane) / depth;
-	projectionMatrix.array[11] = - (2 * nearPlane * farPlane) / depth;
-    projectionMatrix.array[14] = -1;*/
+            projectionMatrix = Matrix4::createOrthographic(nearPlane, farPlane, r, l, t, b);
+        }
+        break;
+        case Perspective: {
+            projectionMatrix = Matrix4::createPerspective(nearPlane, farPlane, aspectRatio, radians(fovAngle));
+        }
+    }
 }
