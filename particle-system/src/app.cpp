@@ -8,6 +8,11 @@ App::App()
     if (err != GLEW_OK)
         cout<<"glewInit failed, aborting. error: "<< glewGetErrorString(err) << endl;
 
+    QGLFormat glFormat;
+    glFormat.setVersion(3, 2);
+    glFormat.setProfile(QGLFormat::CoreProfile);
+    QGLFormat::setDefaultFormat(glFormat);
+
     Vec3 cameraPosition;
     Quaternion cameraOrientation(0, Vec3::up());
     float aspect = width() / height();
