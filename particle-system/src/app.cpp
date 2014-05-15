@@ -2,25 +2,16 @@
 
 App::App()
 {
-    glInit();
-    glewExperimental = GL_TRUE;
-    GLenum err = glewInit();
-    if (err != GLEW_OK)
-        cout<<"glewInit failed, aborting. error: "<< glewGetErrorString(err) << endl;
+    initGlew();
 
-    QGLFormat glFormat;
-    glFormat.setVersion(3, 2);
-    glFormat.setProfile(QGLFormat::CoreProfile);
-    QGLFormat::setDefaultFormat(glFormat);
-
-    Vec3 cameraPosition;
     Quaternion cameraOrientation(0, Vec3::up());
-    float aspect = width() / height();
-    Camera *camera = new Camera(cameraPosition, cameraOrientation, aspect);
+    Camera *camera = new Camera(Vec3::zero(), cameraOrientation, width() / height());
 
     scene = new Scene(camera);
     shaderManager = new ShaderManager();
     renderer = new Renderer(scene, shaderManager);
+
+    initShaders();
 
     setMouseTracking(true);
 }
@@ -29,6 +20,24 @@ App::~App() {
     delete shaderManager;
     delete renderer;
     delete scene;
+}
+
+void App::initGlew()
+{
+    glInit();
+    glewExperimental = GL_TRUE;
+    GLenum err = glewInit();
+    if (err != GLEW_OK)
+        cout<<"glewInit failed, aborting. error: "<< glewGetErrorString(err) << endl;
+}
+
+void App::initShaders()
+{
+    try {
+        shaderManager->addShader("default");
+    } catch(exception &e) {
+        cerr << e.what();
+    }
 }
 
 void App::initializeGL() {

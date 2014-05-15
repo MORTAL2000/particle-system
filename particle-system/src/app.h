@@ -21,6 +21,10 @@ private:
 public:
     App();
     ~App();
+
+    void initShaders();
+    void initGlew();
+
     void paintGL();
     void resizeGL(int w, int h);
     void initializeGL();
