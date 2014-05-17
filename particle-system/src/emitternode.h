@@ -11,18 +11,20 @@ struct EmitterVertexData {
 
 class EmitterNode : public ModelNode
 {
-	public:
+    public:
         EmitterNode(RenderFramework* framework);
+        ~EmitterNode();
 
-		/**
-		 * Compute default attributes of his mesh's shader
-		 */
-		void init();
+        /**
+         * Compute default attributes of his mesh's shader
+         */
+        void init();
 
-		/**
-		 * Send all of his "uniforms" to his own mesh's shader
-		 */
-		void sendUniforms(Shader* material);
+        /**
+         * Send all of his "uniforms" to his own mesh's shader
+         */
+        void sendUniforms(Shader* material);
+
 };
 
 #endif // EMITTERNODE_H
