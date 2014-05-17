@@ -30,6 +30,7 @@ public:
     void init();
 
     void paintGL();
+    void timerEvent(QTimerEvent *);
     void resizeGL(int w, int h);
     void initializeGL();
     void mouseMoveEvent(QMouseEvent *event);

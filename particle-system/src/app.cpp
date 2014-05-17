@@ -2,8 +2,8 @@
 
 App::App()
 {
-    Quaternion cameraOrientation(0, Vec3::up());
-    Camera *camera = new Camera(Vec3::zero(), cameraOrientation, width() / height());
+    Quaternion cameraOrientation(0, Vec3(1.0, 0.0, 0.0));
+    Camera *camera = new Camera(Vec3(0.0, 0.0, 1.0), cameraOrientation, width() / height());
 
     scene = new Scene(camera);
     shaderManager = new ShaderManager();
@@ -18,6 +18,10 @@ App::~App() {
 
 void App::init()
 {
+    resize(800, 600);
+
+    startTimer(30);
+
     initGlew();
 
     initShaders();
@@ -38,16 +42,13 @@ void App::initGlew()
 
 void App::initShaders()
 {
-    try {
-        shaderManager->addShader("default");
-    } catch(exception &e) {
-        cerr << e.what() << endl;
-    }
+    shaderManager->init();
+    shaderManager->addShader("default");
 }
 
 void App::initializeGL() {
     timer.start();
-    float c = 150 / 255.0;
+    float c = 0;
     glClearColor(c, c, c, c);
 }
 
@@ -67,6 +68,11 @@ void App::paintGL()
     renderer->render(timer.elapsed());
 }
 
+void App::timerEvent(QTimerEvent *)
+{
+    updateGL();
+}
+
 void App::mouseMoveEvent(QMouseEvent *event)
 {
     const float mouseSensivity = 0.1f;
@@ -77,7 +83,7 @@ void App::mouseMoveEvent(QMouseEvent *event)
     Camera *camera = scene->getCamera();
 
     if(camera) {
-        camera->rotateY(cx * mouseSensivity);
-        camera->rotateX(cy * mouseSensivity);
+        //camera->rotateY(cx * mouseSensivity);
+        //camera->rotateX(cy * mouseSensivity);
     }
 }
