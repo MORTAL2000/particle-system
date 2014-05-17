@@ -45,23 +45,15 @@ Matrix4 Matrix4::identity() {
 	return m;
 }
 
-Matrix4 Matrix4::createPerspective(float znear, float zfar, float aspect, float fov) {
+Matrix4 Matrix4::createOrthographic() {
 	Matrix4 m;
 
-	const float h = 1.0f / tan(fov * PI_360);
-    float negDepth = znear-zfar;
-
-	m.array[0]	= h / aspect;
-	m.array[5]	= h;
-    m.array[10] = (zfar+znear) / negDepth;
-    m.array[14] = -1.0f;
-    m.array[11] = 2.0f * (znear*zfar) / negDepth;
-	m.array[15] = 0.0f;
+    // TODO : Ortho
 
 	return m;
 }
 
-Matrix4 Matrix4::createOrthographic(float znear, float zfar,float right, float left, float top, float bottom) {
+Matrix4 Matrix4::createPerspective(float znear, float zfar,float right, float left, float top, float bottom) {
 	Matrix4 m;
     m.toZero();
 

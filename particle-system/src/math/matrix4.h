@@ -27,8 +27,8 @@ class Matrix4 {
         static Matrix4 createRotation(float degrees, const Vec3 &axis);
         static Matrix4 createScale(const Vec3 &scale);
         static Matrix4 createTranslation(const Vec3 &translation);
-        static Matrix4 createPerspective(float znear, float zfar, float aspect, float fov);
-        static Matrix4 createOrthographic(float znear, float zfar,float right, float left, float top, float bottom);
+        static Matrix4 createPerspective(float znear, float zfar,float right, float left, float top, float bottom);
+        static Matrix4 createOrthographic();
         static Matrix4 createLookAt(const Vec3 &from, const Vec3 &lookingAt);
         static Matrix4 createRotation(const Quaternion &q);
         static Matrix4 createView(const Vec3& up, const Vec3& right, const Vec3& forward);

@@ -75,7 +75,7 @@ void Camera::buildViewMatrix()
 void Camera::buildProjectionMatrix()
 {
     switch(projectionType) {
-        case Orthographic: {
+        case Perspective: {
             float r, l, t, b, theta;
             theta = (M_PI * fovAngle / 180.0f) / 2;
             r = nearPlane * tan(theta);
@@ -83,11 +83,12 @@ void Camera::buildProjectionMatrix()
             t = r * aspectRatio;
             b = -t;
 
-            projectionMatrix = Matrix4::createOrthographic(nearPlane, farPlane, r, l, t, b);
+            projectionMatrix = Matrix4::createPerspective(nearPlane, farPlane, r, l, t, b);
         }
         break;
-        case Perspective: {
-            projectionMatrix = Matrix4::createPerspective(nearPlane, farPlane, aspectRatio, radians(fovAngle));
+        case Orthographic: {
+            // orthographic does not work yet
+            projectionMatrix = Matrix4::createOrthographic();
         }
     }
 }
