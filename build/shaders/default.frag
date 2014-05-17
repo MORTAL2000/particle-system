@@ -2,9 +2,9 @@
 
 in vec3 fColour;
 
-out vec3 outColour;
+out vec4 outColour;
 
 void main(void)
 {
-    outColour = fColour;
+    outColour = vec4(fColour, 1.0);
 }

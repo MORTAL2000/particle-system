@@ -3,11 +3,11 @@
 in vec3 position;
 in vec3 colour;
 
-uniform mat4 MVP;
+uniform mat4 mvp;
 out vec3 fColour;
 
 void main(void)
 {
-    gl_Position = MVP * vec4(position, 1.0);
+    gl_Position = mvp * vec4(position, 1.0);
     fColour = colour;
 }
