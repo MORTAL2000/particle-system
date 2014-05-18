@@ -3,7 +3,7 @@
 App::App()
 {
     Quaternion cameraOrientation(0, Vec3(1.0, 0.0, 0.0));
-    Camera *camera = new Camera(Vec3(0.0, 0.0, 4.0), cameraOrientation, width() / height());
+    Camera *camera = new Camera(Vec3(0.0, 0.0, -4.0), cameraOrientation, width() / height());
 
     scene = new Scene(camera);
     shaderManager = new ShaderManager();
@@ -76,15 +76,48 @@ void App::timerEvent(QTimerEvent *)
 
 void App::mouseMoveEvent(QMouseEvent *event)
 {
-    const float mouseSensivity = 0.1f;
+    const float mouseSensivity = 1e-3f;
+
     QPoint cursor = event->pos();
-    float cx = cursor.x();
-    float cy = cursor.y();
+
+    float dx = cursor.x() - lastCursorPos.x();
+    float dy = cursor.y() - lastCursorPos.y();
 
     Camera *camera = scene->getCamera();
 
     if(camera) {
-        //camera->rotateY(cx * mouseSensivity);
-        //camera->rotateX(cy * mouseSensivity);
+        camera->rotateY(dx * mouseSensivity);
+        camera->rotateX(dy * mouseSensivity);
+    }
+
+    lastCursorPos = cursor;
+}
+
+void App::keyPressEvent(QKeyEvent* event)
+{
+    Camera *camera = scene->getCamera();
+    const float camSpeed = 0.5;
+
+    switch(event->key())
+    {
+        case Qt::Key_Escape:
+            close();
+            break;
+
+        case Qt::Key_Left:
+            camera->translate(camera->right() * camSpeed);
+            break;
+
+        case Qt::Key_Right:
+            camera->translate(-camera->right() * camSpeed);
+            break;
+
+        case Qt::Key_Up:
+            camera->translate(-camera->forward() * camSpeed);
+            break;
+
+        case Qt::Key_Down:
+            camera->translate(camera->forward() * camSpeed);
+            break;
     }
 }

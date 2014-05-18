@@ -5,6 +5,7 @@
 
 #include <QGLWidget>
 #include <QMouseEvent>
+#include <QKeyEvent>
 #include <QElapsedTimer>
 #include <iostream>
 #include "renderer.h"
@@ -19,6 +20,7 @@ private:
     Scene* scene;
     QElapsedTimer timer;
     ShaderManager* shaderManager;
+    QPoint lastCursorPos;
 
     void initShaders();
     void initGlew();
@@ -34,6 +36,7 @@ public:
     void resizeGL(int w, int h);
     void initializeGL();
     void mouseMoveEvent(QMouseEvent *event);
+    void keyPressEvent(QKeyEvent* event);
 };
 
 #endif // APP_H

@@ -68,8 +68,8 @@ void Camera::buildViewMatrix()
 {
     Matrix4 view = Matrix4::createView(up(), right(), forward());
     Vec3 p = view * getPosition();
-    setPosition(p);
-    viewMatrix = view * getTranslationMatrix();
+    Matrix4 t = Matrix4::createTranslation(p);
+    viewMatrix = view * t;
 }
 
 void Camera::buildProjectionMatrix()
