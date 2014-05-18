@@ -186,3 +186,29 @@ Matrix4 Matrix4::createTranslation(const Vec3 &translation) {
 
 	return m;
 }
+
+Matrix4 Matrix4::rowMinor() {
+    Matrix4 m;
+
+    m.array[0] = array[0];
+    m.array[1] = array[4];
+    m.array[2] = array[8];
+    m.array[3] = array[12];
+
+    m.array[4] = array[1];
+    m.array[5] = array[5];
+    m.array[6] = array[9];
+    m.array[7] = array[13];
+
+    m.array[8] = array[2];
+    m.array[9] = array[6];
+    m.array[10] = array[10];
+    m.array[11] = array[14];
+
+    m.array[12] = array[3];
+    m.array[13] = array[7];
+    m.array[14] = array[11];
+    m.array[15] = array[15];
+
+    return m;
+}

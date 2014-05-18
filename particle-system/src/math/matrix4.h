@@ -23,6 +23,7 @@ class Matrix4 {
 
         void toZero();
         void toIdentity();
+        Matrix4 rowMinor();
 
         static Matrix4 createRotation(float degrees, const Vec3 &axis);
         static Matrix4 createScale(const Vec3 &scale);
@@ -42,7 +43,7 @@ class Matrix4 {
 				for(unsigned int c = 0; c < 4; ++c) {
 					out.array[c + (r*4)] = 0.0f;
 					for(unsigned int i = 0; i < 4; ++i) {
-						out.array[c + (r*4)] += this->array[c+(i*4)] * a.array[(r*4)+i];
+                        out.array[c + (r*4)] += this->array[(r*4)+i] * a.array[c+(i*4)];
 					}
 				}
 			}

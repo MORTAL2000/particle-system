@@ -17,7 +17,7 @@ class Camera : public SceneNode
                float fovAngle = 60.0f,
                float nearPlane = 1.0f,
                float farPlane = 1000.0f,
-               ProjectionType type = Orthographic);
+               ProjectionType type = Perspective);
         ~Camera();
         Matrix4 getViewMatrix();
         Matrix4 getProjectionMatrix();

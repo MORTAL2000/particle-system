@@ -77,7 +77,7 @@ void Camera::buildProjectionMatrix()
     switch(projectionType) {
         case Perspective: {
             float r, l, t, b, theta;
-            theta = (M_PI * fovAngle / 180.0f) / 2;
+            theta = radians(fovAngle) / 2;
             r = nearPlane * tan(theta);
             l = -r;
             t = r * aspectRatio;

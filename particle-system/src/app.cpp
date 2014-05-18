@@ -3,7 +3,7 @@
 App::App()
 {
     Quaternion cameraOrientation(0, Vec3(1.0, 0.0, 0.0));
-    Camera *camera = new Camera(Vec3(0.0, 0.0, 1.0), cameraOrientation, width() / height());
+    Camera *camera = new Camera(Vec3(0.0, 0.0, 4.0), cameraOrientation, width() / height());
 
     scene = new Scene(camera);
     shaderManager = new ShaderManager();
@@ -50,6 +50,7 @@ void App::initializeGL() {
     timer.start();
     float c = 0;
     glClearColor(c, c, c, c);
+    glEnable(GL_DEPTH_TEST);
 }
 
 void App::resizeGL(int w, int h)

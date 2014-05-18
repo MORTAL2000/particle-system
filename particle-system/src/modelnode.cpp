@@ -1,6 +1,7 @@
 #include "modelnode.h"
 
 ModelNode::ModelNode(RenderFramework* framework, Mesh* mesh)
+    : SceneNode(Vec3(0.0), Quaternion(0.0, Vec3(1.0, 0.0, 0.0)))
 {
     this->visible = true;
     this->mesh = mesh;
@@ -24,7 +25,7 @@ ModelNode::~ModelNode()
 
 void ModelNode::sendDefaultUniforms(Shader *material)
 {
-    material->sendUniform("mvp", framework->getMVP());
+    material->sendUniform("mvp", framework->getMVP().rowMinor());
     material->sendUniform("time", framework->getTime());
 }
 
