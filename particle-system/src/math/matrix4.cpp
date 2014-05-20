@@ -68,20 +68,24 @@ Matrix4 Matrix4::createPerspective(float znear, float zfar,float right, float le
 	return m;
 }
 
-Matrix4 Matrix4::createView(const Vec3& up, const Vec3& right, const Vec3& forward) {
+Matrix4 Matrix4::createView(const Vec3& up, const Vec3& right, const Vec3& forward, const Vec3& translate) {
     Matrix4 m;
 
     m.array[0] = right.x;
-    m.array[4] = right.y;
-    m.array[8] = right.z;
+    m.array[1] = right.y;
+    m.array[2] = right.z;
 
-    m.array[1] = up.x;
+    m.array[4] = up.x;
     m.array[5] = up.y;
-    m.array[9] = up.z;
+    m.array[6] = up.z;
 
-    m.array[2] = -forward.x;
-    m.array[6] = -forward.y;
+    m.array[8]  = -forward.x;
+    m.array[9]  = -forward.y;
     m.array[10] = -forward.z;
+
+    m.array[3]  = translate.dot(right);
+    m.array[7]  = translate.dot(up);
+    m.array[11] = translate.dot(-forward);
 
     return m;
 }
@@ -187,28 +191,33 @@ Matrix4 Matrix4::createTranslation(const Vec3 &translation) {
 	return m;
 }
 
-Matrix4 Matrix4::rowMinor() {
-    Matrix4 m;
+Vec3 Matrix4::getTranslation() const
+{
+    return Vec3(array[3], array[7], array[11]);
+}
 
-    m.array[0] = array[0];
-    m.array[1] = array[4];
-    m.array[2] = array[8];
-    m.array[3] = array[12];
+Matrix4& Matrix4::transpose() {
+    Matrix4 m(*this);
 
-    m.array[4] = array[1];
-    m.array[5] = array[5];
-    m.array[6] = array[9];
-    m.array[7] = array[13];
+    array[0] = m.array[0];
+    array[1] = m.array[4];
+    array[2] = m.array[8];
+    array[3] = m.array[12];
 
-    m.array[8] = array[2];
-    m.array[9] = array[6];
-    m.array[10] = array[10];
-    m.array[11] = array[14];
+    array[4] = m.array[1];
+    array[5] = m.array[5];
+    array[6] = m.array[9];
+    array[7] = m.array[13];
 
-    m.array[12] = array[3];
-    m.array[13] = array[7];
-    m.array[14] = array[11];
-    m.array[15] = array[15];
+    array[8] = m.array[2];
+    array[9] = m.array[6];
+    array[10] = m.array[10];
+    array[11] = m.array[14];
 
-    return m;
+    array[12] = m.array[3];
+    array[13] = m.array[7];
+    array[14] = m.array[11];
+    array[15] = m.array[15];
+
+    return *this;
 }

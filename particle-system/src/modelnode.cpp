@@ -23,10 +23,9 @@ ModelNode::~ModelNode()
 
 void ModelNode::sendDefaultUniforms(Shader *material)
 {
-    material->sendUniform("mvp", framework->getMVP().rowMinor());
+    material->sendUniform("mvp", framework->getMVP().transpose());
     material->sendUniform("time", framework->getTime());
 }
-
 
 void ModelNode::setVisible(bool visible)
 {
