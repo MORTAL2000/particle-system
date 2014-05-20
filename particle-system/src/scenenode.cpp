@@ -1,27 +1,53 @@
 #include "scenenode.h"
 
 SceneNode::SceneNode()
-{}
-
-SceneNode::SceneNode(Vec3 position, Quaternion orientation) : position(position), orientation(orientation)
-{}
-
-SceneNode::~SceneNode()
-{}
-
-void SceneNode::setPosition(Vec3 position)
 {
-	this->position = position;
+    setScale(Vec3(1.0));
+    updateTransform();
 }
 
-Vec3 SceneNode::getPosition()
+SceneNode::SceneNode(Vec3 position, Quaternion orientation) : position(position), orientation(orientation)
 {
-	return this->position;
+    setScale(Vec3(1.0));
+    updateTransform();
+}
+
+SceneNode::~SceneNode()
+{
+
+}
+
+Matrix4 SceneNode::getTransform() const
+{
+    return transform;
+}
+
+Vec3 SceneNode::getWorldPosition() const
+{
+    return transform * position;
+}
+
+void SceneNode::setPosition(const Vec3& position)
+{
+    this->position = position;
+}
+
+Vec3 SceneNode::getPosition() const
+{
+    return position;
+}
+
+void SceneNode::setScale(const Vec3& scale)
+{
+    this->scale = scale;
+    updateTransform();
 }
 
 void SceneNode::rotate(float angle, const Vec3& axis) {
     Quaternion q(angle, axis);
     orientation = orientation * q;
+    rotationMatrix = Matrix4::createRotation(orientation);
+    updateTransform();
 }
 
 void SceneNode::rotateX(float angle) {
@@ -41,24 +67,29 @@ void SceneNode::rotateZ(float angle) {
 
 void SceneNode::translate(const Vec3& translation) {
     Matrix4 t = Matrix4::createTranslation(translation);
-    position = t * position;
+    translationMatrix = translationMatrix * t;
+    updateTransform();
 }
 
-void SceneNode::translateX(float value) {
+void SceneNode::translateX(float value)
+{
     translate(Vec3(value, 0.0, 0.0));
 }
 
-void SceneNode::translateY(float value) {
+void SceneNode::translateY(float value)
+{
     translate(Vec3(0.0, value, 0.0));
 }
 
-void SceneNode::translateZ(float value) {
+void SceneNode::translateZ(float value)
+{
     translate(Vec3(0.0, 0.0, value));
 }
 
 void SceneNode::setOrientation(Quaternion orientation)
 {
     this->orientation = orientation;
+    updateTransform();
 }
 
 Quaternion SceneNode::getOrientation()
@@ -66,14 +97,22 @@ Quaternion SceneNode::getOrientation()
 	return this->orientation;
 }
 
-Matrix4 SceneNode::getRotationMatrix()
+void SceneNode::updateTransform()
 {
-    rotationMatrix = Matrix4::createRotation(orientation);
+    transform = getTranslationMatrix() * getRotationMatrix() * getScalingMatrix();
+}
+
+Matrix4 SceneNode::getRotationMatrix() const
+{
     return rotationMatrix;
 }
 
-Matrix4 SceneNode::getTranslationMatrix()
+Matrix4 SceneNode::getTranslationMatrix() const
 {
-    translationMatrix = Matrix4::createTranslation(-position);
     return translationMatrix;
+}
+
+Matrix4 SceneNode::getScalingMatrix() const
+{
+    return Matrix4::createScale(scale);
 }

@@ -6,7 +6,6 @@ ModelNode::ModelNode(RenderFramework* framework, Mesh* mesh)
     this->visible = true;
     this->mesh = mesh;
     this->framework = framework;
-    this->scale = Vec3(1.0f);
 }
 
 ModelNode::ModelNode(RenderFramework* framework, Mesh* mesh, Vec3 position, Quaternion orientation)
@@ -15,7 +14,6 @@ ModelNode::ModelNode(RenderFramework* framework, Mesh* mesh, Vec3 position, Quat
     this->visible = true;
     this->mesh = mesh;
     this->framework = framework;
-    this->scale = Vec3(1.0f);
 }
 
 ModelNode::~ModelNode()
@@ -29,22 +27,6 @@ void ModelNode::sendDefaultUniforms(Shader *material)
     material->sendUniform("time", framework->getTime());
 }
 
-Matrix4 ModelNode::getScalingMatrix()
-{
-    scalingMatrix = Matrix4::createScale(scale);
-    return scalingMatrix;
-}
-
-Matrix4 ModelNode::getTransform()
-{
-    transform = getTranslationMatrix() * getRotationMatrix() * getScalingMatrix();
-    return transform;
-}
-
-void ModelNode::setScale(const Vec3& scale)
-{
-    this->scale = scale;
-}
 
 void ModelNode::setVisible(bool visible)
 {
@@ -84,7 +66,9 @@ void ModelNode::visit()
     sendUniforms(mat);
 
     // draw the mesh
+    preRender();
     mesh->draw();
+    postRender();
 
     // unuse current shader
     mat->release();

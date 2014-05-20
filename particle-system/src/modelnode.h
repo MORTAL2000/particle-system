@@ -12,11 +12,8 @@ class ModelNode : public SceneNode
 private:
     bool visible;
     vector<ModelNode*> children;
-    Vec3 scale;
-    Matrix4 transform;
-    Matrix4 scalingMatrix;
 
-    Matrix4 getScalingMatrix();
+    Matrix4 getScalingMatrix() const;
 
 protected:
     virtual void sendUniforms(Shader* material) = 0;
@@ -33,8 +30,9 @@ public:
     void setVisible(bool visible);
     void addChild(ModelNode *child);
     void visit();
-    void setScale(const Vec3& scale);
-    Matrix4 getTransform();
+
+    virtual void preRender() {}
+    virtual void postRender() {}
 };
 
 #endif // MODELNODE_H

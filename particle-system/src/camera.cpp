@@ -67,7 +67,7 @@ Vec3 Camera::forward() {
 void Camera::buildViewMatrix()
 {
     Matrix4 view = Matrix4::createView(up(), right(), forward());
-    Vec3 p = view * getPosition();
+    Vec3 p = view * getWorldPosition();
     Matrix4 t = Matrix4::createTranslation(p);
     viewMatrix = view * t;
 }

@@ -1,9 +1,8 @@
 #include "emitternode.h"
 
 EmitterNode::EmitterNode(RenderFramework* framework)
-    : ModelNode(framework, new Mesh(framework->getShaderManager()->getShader("default"), GL_TRIANGLES))
+    : ModelNode(framework, new Mesh(framework->getShaderManager()->getShader("default"), GL_LINES))
 {
-
 }
 
 EmitterNode::~EmitterNode()
@@ -13,15 +12,17 @@ EmitterNode::~EmitterNode()
 
 void EmitterNode::init()
 {
-    int dataSize = 3;
+    int dataSize = 6;
     EmitterVertexData* vertexData = new EmitterVertexData[dataSize];
 
-    vertexData[0].pos = Vec3(-1.0, 0.0, -3.0);
-    vertexData[0].color = Vec3(1.0, 0.0, 0.0);
-    vertexData[1].pos = Vec3( 0.0, 1.0, -3.0);
-    vertexData[1].color = Vec3(0.0, 1.0, 0.0);
-    vertexData[2].pos = Vec3( 1.0, 0.0, -3.0);
-    vertexData[2].color = Vec3(0.0, 0.0, 1.0);
+    for(int i = 0; i < 3; ++i) {
+        float m = i%3;
+        Vec3 p1, p2(m==0, m==1, m==2);
+        vertexData[2*i].pos = p1;
+        vertexData[2*i].color = p2;
+        vertexData[2*i+1].pos = p2;
+        vertexData[2*i+1].color = p2;
+    }
 
     vector<VertexBufferDataInfo> dataInfos;
 

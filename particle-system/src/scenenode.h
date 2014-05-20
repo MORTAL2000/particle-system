@@ -10,10 +10,6 @@ class SceneNode
         SceneNode(Vec3 position, Quaternion orientation);
         virtual ~SceneNode();
 
-		// Position
-        void setPosition(Vec3 position);
-        Vec3 getPosition();
-
 		// Orientation
 		void setOrientation(Quaternion orientation);
 		Quaternion getOrientation();
@@ -27,13 +23,28 @@ class SceneNode
         void translate(const Vec3& translation);
         void rotate(float angle, const Vec3& axis);
 
+        virtual Matrix4 getTransform() const;
+        Vec3 getWorldPosition() const;
+        void setPosition(const Vec3& position);
+        Vec3 getPosition() const;
+        void setScale(const Vec3& scale);
+        Vec3 getScale() const;
+
     protected:
-        Matrix4 rotationMatrix;
-        Matrix4 translationMatrix;
-        Matrix4 getRotationMatrix();
-        Matrix4 getTranslationMatrix();
+        Matrix4 getScalingMatrix() const;
+        Matrix4 getRotationMatrix() const;
+        Matrix4 getTranslationMatrix() const;
+
+     private:
+        void updateTransform();
         Vec3 position;
-		Quaternion orientation;
+        Vec3 scale;
+        Quaternion orientation;
+
+        Matrix4 transform;
+        Matrix4 translationMatrix;
+        Matrix4 rotationMatrix;
+
 };
 
 #endif // SCENENODE_H
