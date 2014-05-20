@@ -75,7 +75,7 @@ void App::timerEvent(QTimerEvent *)
 
 void App::mouseMoveEvent(QMouseEvent *event)
 {
-    const float mouseSensivity = 1e-2f;
+    const float mouseSensivity = 5e-3f;
 
     QPoint cursor = event->pos();
 
@@ -104,19 +104,19 @@ void App::keyPressEvent(QKeyEvent* event)
             break;
 
         case Qt::Key_Left:
-            camera->translate(camera->right() * camSpeed);
-            break;
-
-        case Qt::Key_Right:
             camera->translate(-camera->right() * camSpeed);
             break;
 
+        case Qt::Key_Right:
+            camera->translate(camera->right() * camSpeed);
+            break;
+
         case Qt::Key_Up:
-            camera->translate(-camera->forward() * camSpeed);
+            camera->translate(camera->forward() * camSpeed);
             break;
 
         case Qt::Key_Down:
-            camera->translate(camera->forward() * camSpeed);
+            camera->translate(-camera->forward() * camSpeed);
             break;
     }
 }

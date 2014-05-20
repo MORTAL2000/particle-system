@@ -69,25 +69,34 @@ Matrix4 Matrix4::createPerspective(float znear, float zfar,float right, float le
 }
 
 Matrix4 Matrix4::createView(const Vec3& up, const Vec3& right, const Vec3& forward, const Vec3& translate) {
-    Matrix4 m;
+    Matrix4 r;
 
-    m.array[0] = right.x;
-    m.array[1] = right.y;
-    m.array[2] = right.z;
+    r.setColumn(0, right);
+    r.setColumn(1, up);
+    r.setColumn(2, -forward);
 
-    m.array[4] = up.x;
-    m.array[5] = up.y;
-    m.array[6] = up.z;
+    r.transpose();
+    r.setTranslation(-(r * translate));
 
-    m.array[8]  = -forward.x;
-    m.array[9]  = -forward.y;
-    m.array[10] = -forward.z;
+    return r;
+}
 
-    m.array[3]  = translate.dot(right);
-    m.array[7]  = translate.dot(up);
-    m.array[11] = translate.dot(-forward);
+void Matrix4::setColumn(int i, const Vec3& column) {
+    assert(i < 4);
+    for(int j = 0; j < 3; ++j) {
+        array[i + j*4] = column.v[j];
+    }
+}
 
-    return m;
+void Matrix4::setRow(int i, const Vec3& column) {
+    assert(i < 4);
+    for(int j = 0; j < 3; ++j) {
+        array[i*4 + j] = column.v[j];
+    }
+}
+
+void Matrix4::setTranslation(const Vec3& t) {
+    setColumn(3, t);
 }
 
 Matrix4 Matrix4::createLookAt(const Vec3 &from, const Vec3 &lookingAt) {
@@ -101,17 +110,9 @@ Matrix4 Matrix4::createLookAt(const Vec3 &from, const Vec3 &lookingAt) {
     Vec3 s = f.cross(up);
     Vec3 u = s.cross(f);
 
-	m.array[0] = s.x;
-    m.array[1] = s.y;
-    m.array[2] = s.z;
-
-    m.array[4] = u.x;
-	m.array[5] = u.y;
-    m.array[6] = u.z;
-
-    m.array[8]  = -f.x;
-    m.array[9]  = -f.y;
-    m.array[10] = -f.z;
+    m.setRow(0, s);
+    m.setRow(1, u);
+    m.setRow(2, -f);
 
 	return m*r;
 }
@@ -199,25 +200,11 @@ Vec3 Matrix4::getTranslation() const
 Matrix4& Matrix4::transpose() {
     Matrix4 m(*this);
 
-    array[0] = m.array[0];
-    array[1] = m.array[4];
-    array[2] = m.array[8];
-    array[3] = m.array[12];
-
-    array[4] = m.array[1];
-    array[5] = m.array[5];
-    array[6] = m.array[9];
-    array[7] = m.array[13];
-
-    array[8] = m.array[2];
-    array[9] = m.array[6];
-    array[10] = m.array[10];
-    array[11] = m.array[14];
-
-    array[12] = m.array[3];
-    array[13] = m.array[7];
-    array[14] = m.array[11];
-    array[15] = m.array[15];
+    for(int i = 0; i < 4; ++i) {
+        for(int j = 0; j < 4; ++j) {
+            array[i+j*4] = m.array[i*4+j];
+        }
+    }
 
     return *this;
 }

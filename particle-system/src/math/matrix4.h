@@ -7,6 +7,7 @@
 #include "vec4.h"
 #include "mathshelpers.h"
 #include "quaternion.h"
+#include <assert.h>
 
 class Matrix4 {
 	public:
@@ -25,6 +26,9 @@ class Matrix4 {
         void toIdentity();
         Matrix4& transpose();
         Vec3 getTranslation() const;
+        void setColumn(int i, const Vec3& column);
+        void setRow(int i, const Vec3& row);
+        void setTranslation(const Vec3& t);
 
         static Matrix4 createRotation(float degrees, const Vec3 &axis);
         static Matrix4 createScale(const Vec3 &scale);
