@@ -45,7 +45,8 @@ HEADERS += \
 	src/bufferattribute.h \
 	src/camera.h \
     src/emitternode.h \
-    src/scenebuilder.h
+    src/scenebuilder.h \
+    src/waveparticlesnode.h
 
 SOURCES += \
     src/app.cpp \
@@ -64,20 +65,25 @@ SOURCES += \
 	src/shadermanager.cpp \
 	src/camera.cpp \
     src/emitternode.cpp \
-    src/scenebuilder.cpp
+    src/scenebuilder.cpp \
+    src/waveparticlesnode.cpp
 
 OTHER_FILES += \
     ../build/shaders/default.frag \
     ../build/shaders/default.vert \
     ../build/shaders/linear_emitter.vert \
-    ../build/shaders/linear_emitter.frag
+    ../build/shaders/linear_emitter.frag \
+    ../build/shaders/waves.frag \
+    ../build/shaders/waves.vert
 
 
 macx {
         MediaFiles.files =  ../build/shaders/default.vert \
                             ../build/shaders/default.frag \
                             ../build/shaders/linear_emitter.vert \
-                            ../build/shaders/linear_emitter.frag
+                            ../build/shaders/linear_emitter.frag \
+                            ../build/shaders/waves.vert \
+                            ../build/shaders/waves.frag
         MediaFiles.path = Contents/MacOS/shaders
         QMAKE_BUNDLE_DATA += MediaFiles
 }

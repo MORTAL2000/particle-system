@@ -137,6 +137,7 @@ GLint Shader::uniform(string uniformName) const {
     GLint uniform = glGetUniformLocation(program, uniformName.c_str());
 
     //if(uniform < 0) {
+    //    cerr << "uniform " << uniformName << " not found in shader " << getName() << endl;
     //    throw runtime_error("Uniform variable not found : " + uniformName + " (" + name + ")");
     //}
 

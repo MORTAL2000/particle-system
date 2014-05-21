@@ -3,6 +3,7 @@
 
 #include "scene.h"
 #include "emitternode.h"
+#include "waveparticlesnode.h"
 #include "renderframework.h"
 #include "mesh.h"
 #include "GL/glew.h"
