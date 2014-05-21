@@ -13,6 +13,8 @@ private:
     MatrixStack<Matrix4> stack;
     Scene *scene;
     ShaderManager *shaderManager;
+    float time;
+
 public:
     Renderer(Scene* scene, ShaderManager* shaderManager);
     ~Renderer();

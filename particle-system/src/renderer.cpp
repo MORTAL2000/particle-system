@@ -44,11 +44,13 @@ Matrix4 Renderer::getMVP() const
 
 float Renderer::getTime() const
 {
-    return 0;
+    return time;
 }
 
 void Renderer::render(float time)
 {
+    this->time = time;
+
     pushMatrix(Matrix4::identity());
 
     vector<SceneNode*>::const_iterator it;

@@ -6,10 +6,13 @@
 struct WaveParticlesVertexData {
     Vec3 pos;
     Vec3 color;
+    Vec2 offset;
 };
 
-class WaveParticlesNode : ModelNode
+class WaveParticlesNode : public ModelNode
 {
+private:
+    int areaWidth;
 public:
     WaveParticlesNode(RenderFramework* framework);
     ~WaveParticlesNode();

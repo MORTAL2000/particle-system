@@ -9,6 +9,7 @@ enum BufferAttribute {
     TEXTURE_BUFFER,
     DELAY_BUFFER,
     VELOCITY_BUFFER,
+    OFFSET_BUFFER,
     BUFFER_COUNT,
 };
 

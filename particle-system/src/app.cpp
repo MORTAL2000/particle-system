@@ -2,7 +2,7 @@
 
 App::App()
 {
-    Camera *camera = new Camera(Vec3(0.0, 0.0, 4.0), Quaternion(0, Vec3(1.0, 0.0, 0.0)), width() / height());
+    Camera *camera = new Camera(Vec3(0.0, 5.0, 40.0), Quaternion(0, Vec3(1.0, 0.0, 0.0)), width() / height());
 
     scene = new Scene(camera);
     shaderManager = new ShaderManager();
@@ -75,7 +75,7 @@ void App::timerEvent(QTimerEvent *)
 
 void App::mouseMoveEvent(QMouseEvent *event)
 {
-    const float mouseSensivity = 5e-3f;
+    const float mouseSensivity = 1e-2f;
 
     QPoint cursor = event->pos();
 
@@ -87,9 +87,11 @@ void App::mouseMoveEvent(QMouseEvent *event)
     if(camera) {
         camera->rotateY(dx * mouseSensivity);
         camera->rotateX(dy * mouseSensivity);
+
     }
 
     lastCursorPos = cursor;
+    event->accept();
 }
 
 void App::keyPressEvent(QKeyEvent* event)
