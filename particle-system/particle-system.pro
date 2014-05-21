@@ -45,7 +45,8 @@ HEADERS += \
 	src/bufferattribute.h \
 	src/camera.h \
     src/emitternode.h \
-    src/scenebuilder.h
+    src/scenebuilder.h \
+    src/waveparticlesnode.h
 
 SOURCES += \
     src/app.cpp \
@@ -64,7 +65,8 @@ SOURCES += \
 	src/shadermanager.cpp \
 	src/camera.cpp \
     src/emitternode.cpp \
-    src/scenebuilder.cpp
+    src/scenebuilder.cpp \
+    src/waveparticlesnode.cpp
 
 OTHER_FILES += \
     ../build/shaders/default.frag \
