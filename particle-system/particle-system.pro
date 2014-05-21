@@ -72,7 +72,9 @@ OTHER_FILES += \
     ../build/shaders/default.frag \
     ../build/shaders/default.vert \
     ../build/shaders/linear_emitter.vert \
-    ../build/shaders/linear_emitter.frag
+    ../build/shaders/linear_emitter.frag \
+    ../build/shaders/waves.frag \
+    ../build/shaders/waves.vert
 
 
 macx {
