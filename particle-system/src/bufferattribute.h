@@ -7,7 +7,9 @@ enum BufferAttribute {
     NORMAL_BUFFER,
     INDEX_BUFFER,
     TEXTURE_BUFFER,
-    BUFFER_COUNT
+    DELAY_BUFFER,
+    VELOCITY_BUFFER,
+    BUFFER_COUNT,
 };
 
 #endif // BUFFERATTRIBUTE_H

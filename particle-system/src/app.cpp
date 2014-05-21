@@ -2,7 +2,7 @@
 
 App::App()
 {
-    Camera *camera = new Camera(Vec3(0.0, 0.0, -4.0), Quaternion(0, Vec3(1.0, 0.0, 0.0)), width() / height());
+    Camera *camera = new Camera(Vec3(0.0, 0.0, 0.0), Quaternion(0, Vec3(1.0, 0.0, 0.0)), width() / height());
 
     scene = new Scene(camera);
     shaderManager = new ShaderManager();

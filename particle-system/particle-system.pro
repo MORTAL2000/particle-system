@@ -68,11 +68,16 @@ SOURCES += \
 
 OTHER_FILES += \
     ../build/shaders/default.frag \
-    ../build/shaders/default.vert
+    ../build/shaders/default.vert \
+    ../build/shaders/linear_emitter.vert \
+    ../build/shaders/linear_emitter.frag
 
 
 macx {
-        MediaFiles.files = ../build/shaders/default.vert ../build/shaders/default.frag
+        MediaFiles.files =  ../build/shaders/default.vert \
+                            ../build/shaders/default.frag \
+                            ../build/shaders/linear_emitter.vert \
+                            ../build/shaders/linear_emitter.frag
         MediaFiles.path = Contents/MacOS/shaders
         QMAKE_BUNDLE_DATA += MediaFiles
 }

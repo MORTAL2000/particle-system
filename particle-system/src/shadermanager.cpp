@@ -19,11 +19,21 @@ void ShaderManager::init()
     defaultAttributes.insert(pair<string, BufferAttribute>("normal", NORMAL_BUFFER));
 }
 
+map<string, BufferAttribute> ShaderManager::getDefaultAttributes() const
+{
+    return defaultAttributes;
+}
+
 void ShaderManager::addShader(const string& shaderName)
 {
     Shader* shader = new Shader(shaderName);
     shader->init(defaultAttributes);
     shaders.insert(pair<string, Shader*>(shaderName, shader));
+}
+
+void ShaderManager::addShader(Shader* shader)
+{
+    addShader(shader, shader->getName());
 }
 
 void ShaderManager::addShader(Shader* shader, const string& name)

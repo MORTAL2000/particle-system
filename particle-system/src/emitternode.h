@@ -6,6 +6,8 @@
 struct EmitterVertexData {
     Vec3 pos;
     Vec3 color;
+    float delay;
+    float velocity;
     // TODO : add other attributes
 };
 
@@ -24,6 +26,8 @@ class EmitterNode : public ModelNode
          * Send all of his "uniforms" to his own mesh's shader
          */
         void sendUniforms(Shader* material);
+        void preRender();
+        void postRender();
 
 };
 
