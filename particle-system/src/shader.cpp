@@ -11,8 +11,12 @@ void Shader::init(const map<string, BufferAttribute>& attributes) {
     string fragName = SHADER_PATH + name + string(".frag");
     string vertName = SHADER_PATH + name + string(".vert");
 
-    vertex = createShader(GL_VERTEX_SHADER, vertName);
-    fragment = createShader(GL_FRAGMENT_SHADER, fragName);
+    try {
+        vertex = createShader(GL_VERTEX_SHADER, vertName);
+        fragment = createShader(GL_FRAGMENT_SHADER, fragName);
+    } catch(exception& e) {
+        cerr << e.what() << endl;
+    }
 
     glAttachShader(program, vertex);
     glAttachShader(program, fragment);

@@ -14,7 +14,7 @@ class Camera : public SceneNode
         Camera(Vec3 position,
                Quaternion orientation,
                float aspectRatio,
-               float fovAngle = 60.0f,
+               float fovAngle = 80.0f,
                float nearPlane = 1.0f,
                float farPlane = 1000.0f,
                ProjectionType type = Perspective);

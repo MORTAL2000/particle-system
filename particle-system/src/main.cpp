@@ -1,6 +1,8 @@
 #include <QApplication>
 #include "app.h"
 
+#include "math/matrix4.h"
+
 int main(int argc, char *argv[]) {
     QGLFormat glFormat;
     glFormat.setVersion(3, 2);

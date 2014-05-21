@@ -23,7 +23,7 @@ class SceneNode
         void translate(const Vec3& translation);
         void rotate(float angle, const Vec3& axis);
 
-        virtual Matrix4 getTransform() const;
+        Matrix4 getTransform() const;
         Vec3 getWorldPosition() const;
         void setPosition(const Vec3& position);
         Vec3 getPosition() const;
