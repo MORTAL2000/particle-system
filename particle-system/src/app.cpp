@@ -28,6 +28,11 @@ void App::init()
     SceneBuilder::buildScene(scene, renderer);
 
     setMouseTracking(true);
+
+    QCursor curs = cursor();
+    QPoint p(width() / 2, height() / 2);
+    curs.setPos(mapToGlobal(p));
+    setCursor(curs);
 }
 
 void App::initGlew()
@@ -76,11 +81,12 @@ void App::timerEvent(QTimerEvent *)
 void App::mouseMoveEvent(QMouseEvent *event)
 {
     const float mouseSensivity = 1e-2f;
+    QPoint p(width() / 2, height() / 2);
+    QPoint cursorPos = event->pos();
+    QCursor curs = cursor();
 
-    QPoint cursor = event->pos();
-
-    float dx = cursor.x() - lastCursorPos.x();
-    float dy = cursor.y() - lastCursorPos.y();
+    float dx = cursorPos.x() - p.x();
+    float dy = cursorPos.y() - p.y();
 
     Camera *camera = scene->getCamera();
 
@@ -88,10 +94,15 @@ void App::mouseMoveEvent(QMouseEvent *event)
         camera->rotateY(dx * mouseSensivity);
         camera->rotateX(dy * mouseSensivity);
 
+        event->accept();
     }
 
-    lastCursorPos = cursor;
-    event->accept();
+    lastCursorPos = cursorPos;
+
+    curs.setPos(mapToGlobal(p));
+    curs.setShape(Qt::BlankCursor);
+
+    setCursor(curs);
 }
 
 void App::keyPressEvent(QKeyEvent* event)

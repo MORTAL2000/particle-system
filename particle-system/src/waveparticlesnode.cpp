@@ -74,6 +74,8 @@ void WaveParticlesNode::init()
     dataInfos.push_back(offsetInfo);
 
     mesh->createInterleavedBufferData(dataInfos, waveBufferData, nbParticles * sizeof(WaveParticlesVertexData), GL_STATIC_DRAW);
+
+    delete[] waveBufferData;
 }
 
 void WaveParticlesNode::sendUniforms(Shader* material)
