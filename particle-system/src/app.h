@@ -21,6 +21,7 @@ private:
     QElapsedTimer timer;
     ShaderManager* shaderManager;
     QPoint lastCursorPos;
+    bool isCapturingCursor;
 
     void initShaders();
     void initGlew();

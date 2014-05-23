@@ -7,6 +7,7 @@ App::App()
     scene = new Scene(camera);
     shaderManager = new ShaderManager();
     renderer = new Renderer(scene, shaderManager);
+    isCapturingCursor = true;
 }
 
 App::~App() {
@@ -80,29 +81,35 @@ void App::timerEvent(QTimerEvent *)
 
 void App::mouseMoveEvent(QMouseEvent *event)
 {
-    const float mouseSensivity = 1e-2f;
-    QPoint p(width() / 2, height() / 2);
-    QPoint cursorPos = event->pos();
     QCursor curs = cursor();
+    if(isCapturingCursor) {
+        const float mouseSensivity = 1e-2f;
+        QPoint p(width() / 2, height() / 2);
+        QPoint cursorPos = event->pos();
 
-    float dx = cursorPos.x() - p.x();
-    float dy = cursorPos.y() - p.y();
+        float dx = cursorPos.x() - p.x();
+        float dy = cursorPos.y() - p.y();
 
-    Camera *camera = scene->getCamera();
+        Camera *camera = scene->getCamera();
 
-    if(camera) {
-        camera->rotateY(dx * mouseSensivity);
-        camera->rotateX(dy * mouseSensivity);
+        if(camera != NULL && curs.shape() == Qt::BlankCursor) {
+            camera->rotateY(dx * mouseSensivity);
+            camera->rotateX(dy * mouseSensivity);
 
-        event->accept();
+            event->accept();
+        }
+
+        lastCursorPos = cursorPos;
+
+        curs.setPos(mapToGlobal(p));
+        curs.setShape(Qt::BlankCursor);
+
+        setCursor(curs);
     }
-
-    lastCursorPos = cursorPos;
-
-    curs.setPos(mapToGlobal(p));
-    curs.setShape(Qt::BlankCursor);
-
-    setCursor(curs);
+    else if(curs.shape() == Qt::BlankCursor) {
+        curs.setShape(Qt::ArrowCursor);
+        setCursor(curs);
+    }
 }
 
 void App::keyPressEvent(QKeyEvent* event)
@@ -114,6 +121,10 @@ void App::keyPressEvent(QKeyEvent* event)
     {
         case Qt::Key_Escape:
             close();
+            break;
+
+        case Qt::Key_Alt:
+            isCapturingCursor = !isCapturingCursor;
             break;
 
         case Qt::Key_Left:
