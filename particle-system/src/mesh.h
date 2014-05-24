@@ -10,7 +10,6 @@
 
 struct VertexBufferDataInfo {
     BufferAttribute attributeType;
-    GLsizei stride;
     int size;
     int offset;
     GLenum dataType;
@@ -32,7 +31,7 @@ public:
     Shader* getMaterial();
     void draw();
     void createInterleavedBufferData(const vector<VertexBufferDataInfo>& dataInfo,
-                                     void* data, GLsizeiptr totalDataSize, GLenum usage);
+                                     void* data, GLsizeiptr totalDataSize, GLenum usage, GLsizei stride);
 };
 
 #endif // MESH_H

@@ -4,11 +4,11 @@
 #include "modelnode.h"
 
 struct EmitterVertexData {
-    Vec3 pos;
+    Vec3 position;
     Vec3 color;
+    Vec3 velocity;
     float delay;
-    float velocity;
-    // TODO : add other attributes
+    float lifetime;
 };
 
 class EmitterNode : public ModelNode

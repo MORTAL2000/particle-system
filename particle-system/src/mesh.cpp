@@ -29,7 +29,7 @@ void Mesh::draw() {
 }
 
 void Mesh::createInterleavedBufferData(const vector<VertexBufferDataInfo>& dataInfo,
-                                       void* data, GLsizeiptr totalDataSize, GLenum usage)
+                                       void* data, GLsizeiptr totalDataSize, GLenum usage, GLsizei stride)
 {
     this->vertexDataSize = totalDataSize;
 
@@ -45,7 +45,7 @@ void Mesh::createInterleavedBufferData(const vector<VertexBufferDataInfo>& dataI
     for(it = dataInfo.begin(); it != dataInfo.end(); ++it) {
         VertexBufferDataInfo info = (*it);
         glEnableVertexAttribArray(info.attributeType);
-        glVertexAttribPointer(info.attributeType, info.size, info.dataType, GL_FALSE, info.stride, BUFFER_OFFSET(info.offset));
+        glVertexAttribPointer(info.attributeType, info.size, info.dataType, GL_FALSE, stride, BUFFER_OFFSET(info.offset));
     }
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);

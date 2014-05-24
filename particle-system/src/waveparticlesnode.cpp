@@ -44,11 +44,10 @@ void WaveParticlesNode::init()
 
     vector<VertexBufferDataInfo> dataInfos;
 
-    int stride = sizeof(WaveParticlesVertexData);
+    GLsizei stride = sizeof(WaveParticlesVertexData);
 
     VertexBufferDataInfo colorInfo;
     colorInfo.attributeType = COLOUR_BUFFER;
-    colorInfo.stride = stride;
     colorInfo.offset = sizeof(Vec3);
     colorInfo.dataType = GL_FLOAT;
     colorInfo.size = 3;
@@ -57,7 +56,6 @@ void WaveParticlesNode::init()
 
     VertexBufferDataInfo posInfo;
     posInfo.attributeType = VERTEX_BUFFER;
-    posInfo.stride = stride;
     posInfo.offset = 0;
     posInfo.dataType = GL_FLOAT;
     posInfo.size = 3;
@@ -66,14 +64,14 @@ void WaveParticlesNode::init()
 
     VertexBufferDataInfo offsetInfo;
     offsetInfo.attributeType = OFFSET_BUFFER;
-    offsetInfo.stride = stride;
     offsetInfo.offset = 2 * sizeof(Vec3);
     offsetInfo.dataType = GL_FLOAT;
     offsetInfo.size = 2;
 
     dataInfos.push_back(offsetInfo);
 
-    mesh->createInterleavedBufferData(dataInfos, waveBufferData, nbParticles * sizeof(WaveParticlesVertexData), GL_STATIC_DRAW);
+    mesh->createInterleavedBufferData(dataInfos, waveBufferData,
+                                      nbParticles * sizeof(WaveParticlesVertexData), GL_STATIC_DRAW, stride);
 
     delete[] waveBufferData;
 }

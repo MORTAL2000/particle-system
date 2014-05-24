@@ -10,6 +10,7 @@ enum BufferAttribute {
     DELAY_BUFFER,
     VELOCITY_BUFFER,
     OFFSET_BUFFER,
+    LIFETIME_BUFFER,
     BUFFER_COUNT,
 };
 

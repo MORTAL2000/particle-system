@@ -49,4 +49,8 @@ inline void swap(float& a, float& b) {
     b = tmp;
 }
 
+inline float rand_0_1() {
+    return (float) rand() / RAND_MAX;
+}
+
 #endif
