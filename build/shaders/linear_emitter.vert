@@ -18,5 +18,6 @@ void main(void)
         vec3 new_pos = position + velocity * actual_time;
         gl_Position = mvp * vec4(new_pos, 1.0);
         fColor0 = colour;
+        gl_PointSize = 10;
     }
 }

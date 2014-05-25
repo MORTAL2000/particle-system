@@ -16,7 +16,7 @@ EmitterNode::EmitterNode(RenderFramework* framework)
     framework->getShaderManager()->addShader(emitShader);
 
     this->mesh = new Mesh(emitShader, GL_POINTS);
-    this->texture = new Texture("particleTexture.png", "particleTexture");
+    this->texture = new Texture("particleTexture.png", "tex");
     this->texture->init();
 }
 
@@ -88,7 +88,7 @@ void EmitterNode::init()
 
 void EmitterNode::sendUniforms(Shader *material)
 {
-
+    material->sendUniform(texture->getName(), texture);
 }
 
 void EmitterNode::preRender()
@@ -96,6 +96,7 @@ void EmitterNode::preRender()
     this->texture->bind();
     glEnable(GL_PROGRAM_POINT_SIZE);
     glEnable(GL_BLEND);
+    glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 void EmitterNode::postRender()
