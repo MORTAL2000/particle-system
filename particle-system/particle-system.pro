@@ -76,16 +76,21 @@ OTHER_FILES += \
     ../build/shaders/linear_emitter.vert \
     ../build/shaders/linear_emitter.frag \
     ../build/shaders/waves.frag \
-    ../build/shaders/waves.vert
+    ../build/shaders/waves.vert \
+    ../build/data/particleTexture.png
 
 
 macx {
-        MediaFiles.files =  ../build/shaders/default.vert \
+        ShaderFiles.files = ../build/shaders/default.vert \
                             ../build/shaders/default.frag \
                             ../build/shaders/linear_emitter.vert \
                             ../build/shaders/linear_emitter.frag \
                             ../build/shaders/waves.vert \
                             ../build/shaders/waves.frag
-        MediaFiles.path = Contents/MacOS/shaders
+        ShaderFiles.path = Contents/MacOS/shaders
+        QMAKE_BUNDLE_DATA += ShaderFiles
+
+        MediaFiles.files = ../build/data/particleTexture.png
+        MediaFiles.path = Contents/MacOS/data
         QMAKE_BUNDLE_DATA += MediaFiles
 }

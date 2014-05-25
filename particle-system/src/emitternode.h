@@ -1,6 +1,7 @@
 #ifndef EMITTERNODE_H
 #define EMITTERNODE_H
 
+#include "texture.h"
 #include "modelnode.h"
 
 struct EmitterVertexData {
@@ -13,6 +14,8 @@ struct EmitterVertexData {
 
 class EmitterNode : public ModelNode
 {
+    private:
+        Texture *texture;
     public:
         EmitterNode(RenderFramework* framework);
         ~EmitterNode();

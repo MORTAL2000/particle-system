@@ -16,11 +16,13 @@ EmitterNode::EmitterNode(RenderFramework* framework)
     framework->getShaderManager()->addShader(emitShader);
 
     this->mesh = new Mesh(emitShader, GL_POINTS);
+    this->texture = new Texture("particleTexture.png", "particleTexture");
+    this->texture->init();
 }
 
 EmitterNode::~EmitterNode()
 {
-
+    delete texture;
 }
 
 void EmitterNode::init()
@@ -91,12 +93,14 @@ void EmitterNode::sendUniforms(Shader *material)
 
 void EmitterNode::preRender()
 {
+    this->texture->bind();
     glEnable(GL_PROGRAM_POINT_SIZE);
     glEnable(GL_BLEND);
 }
 
 void EmitterNode::postRender()
 {
+    this->texture->unBind();
     glDisable(GL_PROGRAM_POINT_SIZE);
     glDisable(GL_BLEND);
 }

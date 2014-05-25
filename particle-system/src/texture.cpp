@@ -1,17 +1,19 @@
 #include "texture.h"
 
-Texture::Texture(const string& imagePath, GLuint texIndex)
+Texture::Texture(const string& imagePath, const string& textureName, GLuint texIndex)
 {
     loadImage(imagePath);
     format = GL_RGBA;
     type = GL_UNSIGNED_BYTE;
     internalFormat = GL_RGBA;
     textureIndex = texIndex;
+    name = textureName;
 }
 
 void Texture::loadImage(const string& path)
 {
-    image = QGLWidget::convertToGLFormat(QImage(QString(path.c_str())));
+    string completePath = DATA_PATH + path;
+    image = QGLWidget::convertToGLFormat(QImage(QString(completePath.c_str())));
     width = image.width();
     height = image.height();
 }
@@ -65,6 +67,21 @@ GLuint Texture::getTextureId() const
 GLuint Texture::getTextureIndex() const
 {
     return textureIndex;
+}
+
+unsigned int Texture::getWidth() const
+{
+    return width;
+}
+
+unsigned int Texture::getHeight() const
+{
+    return height;
+}
+
+string Texture::getName() const
+{
+    return name;
 }
 
 void Texture::resize(int w, int h)
