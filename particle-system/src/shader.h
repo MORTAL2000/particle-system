@@ -15,6 +15,7 @@
 #include "math/vec3.h"
 #include "math/vec4.h"
 #include "bufferattribute.h"
+#include "texture.h"
 
 #define SHADER_PATH string("./shaders/")
 
@@ -39,6 +40,7 @@ public:
     void sendUniform(string name, const Vec2& vec) const;
     void sendUniform(string name, const Vec3& vec) const;
     void sendUniform(string name, const Vec4& vec) const;
+    void sendUniform(string name, Texture* texture) const;
 
     void setAttribute(BufferAttribute attribute, const string& name);
 
