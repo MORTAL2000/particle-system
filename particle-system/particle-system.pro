@@ -1,5 +1,5 @@
 CONFIG += console release
-QT += core gui opengl
+QT += core gui opengl widgets
 TARGET = ParticleSystem
 TEMPLATE = app
 
@@ -47,7 +47,8 @@ HEADERS += \
     src/emitternode.h \
     src/scenebuilder.h \
     src/waveparticlesnode.h \
-    src/texture.h
+	src/texture.h \
+    src/mainwindow.h
 
 SOURCES += \
     src/app.cpp \
@@ -68,7 +69,11 @@ SOURCES += \
     src/emitternode.cpp \
     src/scenebuilder.cpp \
     src/waveparticlesnode.cpp \
-    src/texture.cpp
+	src/texture.cpp \
+    src/mainwindow.cpp
+
+FORMS += \
+    src/mainwindow.ui
 
 OTHER_FILES += \
     ../build/shaders/default.frag \

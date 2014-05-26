@@ -15,6 +15,8 @@
 
 class App : public QGLWidget
 {
+	Q_OBJECT
+
 private:
     Renderer* renderer;
     Scene* scene;
@@ -27,7 +29,7 @@ private:
     void initGlew();
 
 public:
-    App();
+	explicit App(QWidget *parent = 0);
     ~App();
 
     void init();

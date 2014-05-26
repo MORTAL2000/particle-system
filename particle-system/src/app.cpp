@@ -1,6 +1,6 @@
 #include "app.h"
 
-App::App()
+App::App(QWidget *parent) : QGLWidget(parent)
 {
     Camera *camera = new Camera(Vec3(0.0, 0.0, 4.0), Quaternion(0, Vec3(1.0, 0.0, 0.0)), width() / height());
 
@@ -42,7 +42,7 @@ void App::initGlew()
     glewExperimental = GL_TRUE;
     GLenum err = glewInit();
     if (err != GLEW_OK)
-        cout<<"glewInit failed, aborting. error: "<< glewGetErrorString(err) << endl;
+		cout<<"glewInit failed, aborting. error: "<< glewGetErrorString(err) << endl;
 }
 
 void App::initShaders()
