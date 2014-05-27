@@ -15,7 +15,7 @@ class Camera : public SceneNode
                Quaternion orientation,
                float aspectRatio,
                float fovAngle = 80.0f,
-               float nearPlane = 1.0f,
+               float nearPlane = 0.01f,
                float farPlane = 1000.0f,
                ProjectionType type = Perspective);
         ~Camera();

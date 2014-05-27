@@ -27,17 +27,17 @@ EmitterNode::~EmitterNode()
 
 void EmitterNode::init()
 {
-    int nbParticles = 10000;
+    int nbParticles = 100000;
 
     EmitterVertexData* emitterData = new EmitterVertexData[nbParticles];
 
-    float maxLifetime = 100.0;
+    float maxLifetime = 10.0;
     float maxVel = 5.0;
     float minVel = 1.0;
 
     for(int i = 0; i < nbParticles; ++i) {
         // TODO : make a direction (here sampling over sphere)
-        float v = rand_0_1() * maxVel + minVel;
+        float v = rand_0_1() * (maxVel - minVel) + minVel;
         float vx = (2.0 * rand_0_1() - 1.0) * v;
         float vy = (2.0 * rand_0_1() - 1.0) * v;
         float vz = (2.0 * rand_0_1() - 1.0) * v;
@@ -46,7 +46,7 @@ void EmitterNode::init()
         emitterData[i].position = Vec3(0.0);
 
         emitterData[i].velocity = Vec3(vx, vy, vz);
-        emitterData[i].color = Vec3(rand_0_1());
+        emitterData[i].color = Vec3(0.9 * rand_0_1() + 0.1);
         emitterData[i].lifetime = rand_0_1() * maxLifetime;
         emitterData[i].delay = rand_0_1();
     }
@@ -94,7 +94,9 @@ void EmitterNode::sendUniforms(Shader *material)
 void EmitterNode::preRender()
 {
     this->texture->bind();
+    glDepthMask(GL_FALSE);
     glEnable(GL_PROGRAM_POINT_SIZE);
+    glEnable(GL_ALPHA_TEST);
     glEnable(GL_BLEND);
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
@@ -102,6 +104,8 @@ void EmitterNode::preRender()
 void EmitterNode::postRender()
 {
     this->texture->unBind();
+    glDepthMask(GL_TRUE);
     glDisable(GL_PROGRAM_POINT_SIZE);
     glDisable(GL_BLEND);
+    glDisable(GL_ALPHA_TEST);
 }

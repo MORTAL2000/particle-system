@@ -13,8 +13,6 @@ private:
     bool visible;
     vector<ModelNode*> children;
 
-    Matrix4 getScalingMatrix() const;
-
 protected:
     virtual void sendUniforms(Shader* material) = 0;
     void sendDefaultUniforms(Shader* material);

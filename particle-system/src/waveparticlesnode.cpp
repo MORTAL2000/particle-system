@@ -11,7 +11,7 @@ WaveParticlesNode::WaveParticlesNode(RenderFramework* framework)
     wavesShader->init(attributes);
     framework->getShaderManager()->addShader(wavesShader);
 
-    this->mesh = new Mesh(wavesShader, GL_POINTS);
+    this->mesh = new Mesh(wavesShader, GL_LINES);
     this->areaWidth = 100;
 }
 
@@ -83,10 +83,15 @@ void WaveParticlesNode::sendUniforms(Shader* material)
 
 void WaveParticlesNode::preRender()
 {
-
+    glEnable(GL_BLEND);
+    glEnable(GL_LINE_SMOOTH);
+    glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glLineWidth(0.5);
 }
 
 void WaveParticlesNode::postRender()
 {
-
+    glDisable(GL_BLEND);
+    glDisable(GL_LINE_SMOOTH);
 }
