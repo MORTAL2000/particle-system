@@ -10,5 +10,4 @@ void main(void)
 {
     gl_Position = mvp * vec4(position, 1.0);
     fColour = colour;
-    gl_PointSize = min(1 / (0.05 * abs(gl_Position.z)), 10.0);
 }

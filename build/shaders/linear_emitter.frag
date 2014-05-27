@@ -10,5 +10,5 @@ void main(void)
 {
     vec2 texcoord = vec2 (gl_PointCoord.s, 1.0 - gl_PointCoord.t);
     vec4 texel = texture(tex, texcoord);
-    outColor = texel * vec4(fColor0, 1.0);
+    outColor = vec4(texel.rgb * fColor0, texel.a);
 }
