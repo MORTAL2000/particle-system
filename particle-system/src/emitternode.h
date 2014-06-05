@@ -3,6 +3,7 @@
 
 #include "texture.h"
 #include "modelnode.h"
+#include "conesampler.h"
 
 struct EmitterVertexData {
     Vec3 position;

@@ -47,7 +47,9 @@ HEADERS += \
     src/emitternode.h \
     src/scenebuilder.h \
     src/waveparticlesnode.h \
-    src/texture.h
+    src/texture.h \
+    src/conesampler.h \
+    src/sampler.h
 
 SOURCES += \
     src/app.cpp \
@@ -68,7 +70,8 @@ SOURCES += \
     src/emitternode.cpp \
     src/scenebuilder.cpp \
     src/waveparticlesnode.cpp \
-    src/texture.cpp
+    src/texture.cpp \
+    src/conesampler.cpp
 
 OTHER_FILES += \
     ../build/shaders/default.frag \

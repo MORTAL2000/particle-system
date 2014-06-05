@@ -149,3 +149,9 @@ Vec3& Vec3::normalize() {
 Vec3 Vec3::zero() {
     return Vec3(0, 0, 0);
 }
+
+Vec2 Vec3::sphericalCoord() const {
+    float phi = acos(x / sqrt(x*x + y*y));
+    float theta = asin(z);
+    return Vec2(theta, phi);
+}

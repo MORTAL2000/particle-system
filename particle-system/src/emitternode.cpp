@@ -32,20 +32,16 @@ void EmitterNode::init()
     EmitterVertexData* emitterData = new EmitterVertexData[nbParticles];
 
     float maxLifetime = 10.0;
-    float maxVel = 5.0;
+    float maxVel = 10.0;
     float minVel = 1.0;
 
-    for(int i = 0; i < nbParticles; ++i) {
-        // TODO : make a direction (here sampling over sphere)
-        float v = rand_0_1() * (maxVel - minVel) + minVel;
-        float vx = (2.0 * rand_0_1() - 1.0) * v;
-        float vy = (2.0 * rand_0_1() - 1.0) * v;
-        float vz = (2.0 * rand_0_1() - 1.0) * v;
+    ConeSampler sampler(Vec3(0.0, 1.0, 0.0), Vec2(radians(20), radians(20)));
 
+    for(int i = 0; i < nbParticles; ++i) {
         // TODO : start from an area
         emitterData[i].position = Vec3(0.0);
 
-        emitterData[i].velocity = Vec3(vx, vy, vz);
+        emitterData[i].velocity = sampler.getSample();
         emitterData[i].color = Vec3(0.9 * rand_0_1() + 0.1);
         emitterData[i].lifetime = rand_0_1() * maxLifetime;
         emitterData[i].delay = rand_0_1();

@@ -46,6 +46,8 @@ class Vec3 {
         float dot(const Vec3& v) const;
         Vec3& normalize();
 
+        Vec2 sphericalCoord() const;
+
 		inline friend ostream& operator<<(ostream& o, const Vec3& vec) {
             o << "(" << vec.x << ", " << vec.y << ", " << vec.z << ")";
             return o;

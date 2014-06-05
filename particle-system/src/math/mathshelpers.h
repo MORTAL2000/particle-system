@@ -17,6 +17,9 @@
 
 #define EPSILON     1e-5f
 
+#include "vec2.h"
+#include "vec3.h"
+
 inline float radians(float deg) {
     return ((float)M_PI/180.f) * deg;
 }
