@@ -1,5 +1,5 @@
 #include <QApplication>
-#include "mainwindow.h"
+#include "window.h"
 
 #include "math/matrix4.h"
 #include "texture.h"
@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
 
     QApplication app(argc, argv);
 
-	MainWindow win;
+	Window win;
 	win.show();
 
 	return app.exec();

@@ -48,7 +48,8 @@ HEADERS += \
     src/scenebuilder.h \
     src/waveparticlesnode.h \
 	src/texture.h \
-    src/mainwindow.h
+	#src/mainwindow.h \
+    src/window.h
 
 SOURCES += \
     src/app.cpp \
@@ -70,10 +71,12 @@ SOURCES += \
     src/scenebuilder.cpp \
     src/waveparticlesnode.cpp \
 	src/texture.cpp \
-    src/mainwindow.cpp
+	#src/mainwindow.cpp \
+    src/window.cpp
 
 FORMS += \
-    src/mainwindow.ui
+	#src/mainwindow.ui \
+    src/window.ui
 
 OTHER_FILES += \
     ../build/shaders/default.frag \

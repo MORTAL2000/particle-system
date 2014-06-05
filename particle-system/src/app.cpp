@@ -18,7 +18,7 @@ App::~App() {
 
 void App::init()
 {
-    resize(800, 600);
+	resize(400, 300);
 
     startTimer(30);
 

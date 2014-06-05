@@ -2,6 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QLayout>
+#include <QKeyEvent>
+#include <QLayoutItem>
+#include <QRegExpValidator>
+
+#include "app.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +23,7 @@ public:
 
 private:
 	Ui::MainWindow *ui;
+	App *app;
 };
 
 #endif // MAINWINDOW_H
