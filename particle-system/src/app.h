@@ -15,6 +15,8 @@
 
 class App : public QGLWidget
 {
+	Q_OBJECT
+
 private:
     Renderer* renderer;
     Scene* scene;
@@ -27,7 +29,7 @@ private:
     void initGlew();
 
 public:
-    App();
+	explicit App(QWidget *parent = 0);
     ~App();
 
     void init();
@@ -37,7 +39,7 @@ public:
     void resizeGL(int w, int h);
     void initializeGL();
     void mouseMoveEvent(QMouseEvent *event);
-    void keyPressEvent(QKeyEvent* event);
+	void keyPressEvent(QKeyEvent* event);
 };
 
 #endif // APP_H
