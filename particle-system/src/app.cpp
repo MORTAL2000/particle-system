@@ -7,7 +7,8 @@ App::App(QWidget *parent) : QGLWidget(parent)
     scene = new Scene(camera);
     shaderManager = new ShaderManager();
     renderer = new Renderer(scene, shaderManager);
-    isCapturingCursor = true;
+	isCapturingCursor = false;
+	init();
 }
 
 App::~App() {
@@ -18,7 +19,7 @@ App::~App() {
 
 void App::init()
 {
-	resize(400, 300);
+	resize(800, 600);
 
     startTimer(30);
 
@@ -119,10 +120,6 @@ void App::keyPressEvent(QKeyEvent* event)
 
     switch(event->key())
     {
-        case Qt::Key_Escape:
-            close();
-            break;
-
         case Qt::Key_Alt:
             isCapturingCursor = !isCapturingCursor;
             break;

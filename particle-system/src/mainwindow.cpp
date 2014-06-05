@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 	app->setFocus();
 	app->init();
 
+	ui->centralwidget = app;
+
 	/*QHBoxLayout *mainLayout;
 	mainLayout = qobject_cast<QHBoxLayout *>(ui->centralwidget->layout());
 	mainLayout->addWidget(app);

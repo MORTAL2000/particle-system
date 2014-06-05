@@ -39,7 +39,7 @@ public:
     void resizeGL(int w, int h);
     void initializeGL();
     void mouseMoveEvent(QMouseEvent *event);
-    void keyPressEvent(QKeyEvent* event);
+	void keyPressEvent(QKeyEvent* event);
 };
 
 #endif // APP_H
