@@ -152,6 +152,6 @@ Vec3 Vec3::zero() {
 
 Vec2 Vec3::sphericalCoord() const {
     float phi = acos(x / sqrt(x*x + y*y));
-    float theta = asin(z);
+    float theta = asin(z / length());
     return Vec2(theta, phi);
 }
