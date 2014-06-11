@@ -30,8 +30,8 @@
 %% load up the fancy box making package
 \RequirePackage{fancybox}
 
-%% worldline blue
-\definecolor{darkblue}{rgb}{0,0.41,0.7}
+%% bluegreen
+%\definecolor{bluegreen}{rgb}{0.0549,0.384,0.431}
 
 %% make the equation numbers have little ovals around them
 \def\tagform@#1{\maketag@@@{\cornersize{0.8}\ovalbox{\ignorespaces\sffamily{#1}\unskip\@@italiccorr}}}
@@ -87,9 +87,9 @@
 
 %% now change the chapter style
 %% load up the quotchap package
-\definecolor{chaptergrey}{rgb}{0,0.41,0.7}
-\RequirePackage[avantgarde,nogrey]{quotchap}
-\renewcommand*\sectfont{\color{darkblue}}
+%\definecolor{chaptergrey}{rgb}{0.0549,0.384,0.431}
+\RequirePackage[avantgarde]{quotchap}
+%\renewcommand*\sectfont{\color{bluegreen}}
 
 %% make the quotation appear next to the chapter number
 \renewcommand\chapterheadstartvskip{\vspace*{-5\baselineskip}}

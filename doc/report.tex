@@ -48,6 +48,12 @@
 
 % INTRODUCTION
 \input{introduction.tex}
+\addcontentsline{toc}{chapter}{Introduction}
+
+% SUMMARY
+\setcounter{tocdepth}{3}
+\renewcommand{\contentsname}{Sommaire}
+\tableofcontents
 
 % PROJECT PRESENTATION
 \input{presentation.tex}
@@ -63,5 +69,6 @@
 
 % CONCLUSION
 \input{conclusion.tex}
+\addcontentsline{toc}{chapter}{Conclusion}
 
 \end{document}
