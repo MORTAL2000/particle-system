@@ -16,6 +16,10 @@ public:
 	explicit Window(QWidget *parent = 0);
 	~Window();
 
+public slots:
+	void selectEmitterType(int type);
+	void setVelocity(int velocity);
+
 protected:
 	void keyPressEvent(QKeyEvent *event);
 

@@ -4,13 +4,23 @@
 Window::Window(QWidget *parent) : QWidget(parent), ui(new Ui::Window)
 {
 	ui->setupUi(this);
-
-
+	setFocusPolicy(Qt::StrongFocus);
 }
 
 Window::~Window()
 {
 	delete ui;
+}
+
+void Window::selectEmitterType(int type)
+{
+	// TODO
+	// We're supposed to change the type the emitter here
+}
+
+void Window::setVelocity(int velocity)
+{
+
 }
 
 void Window::keyPressEvent(QKeyEvent* event)

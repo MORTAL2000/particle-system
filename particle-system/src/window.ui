@@ -34,7 +34,6 @@
        <height>600</height>
       </size>
      </property>
-     <zorder>verticalLayoutWidget</zorder>
     </widget>
    </item>
    <item>
@@ -53,11 +52,44 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string/>
-       </property>
+      <widget class="QComboBox" name="emmiterType">
+       <item>
+        <property name="text">
+         <string>Classic</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Cone</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Waves</string>
+        </property>
+       </item>
       </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Particles velocity</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSlider" name="horizontalSlider">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_3"/>
      </item>
      <item>
       <widget class="QLabel" name="label_3">
@@ -88,5 +120,28 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>emmiterType</sender>
+   <signal>activated(int)</signal>
+   <receiver>Window</receiver>
+   <slot>selectEmitterType(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>958</x>
+     <y>123</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1016</x>
+     <y>164</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>selectEmitterType(int)</slot>
+  <slot>setXDirection(int)</slot>
+  <slot>setYDirection(int)</slot>
+  <slot>setZDirection(int)</slot>
+ </slots>
 </ui>
