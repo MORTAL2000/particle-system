@@ -36,13 +36,14 @@ void EmitterNode::init()
     float minVel = 1.0;
 
     ConeSampler sampler(Vec3(0.0, 1.0, 0.0), Vec2(radians(20), radians(20)));
+    ColorSampler colorSampler;
 
     for(int i = 0; i < nbParticles; ++i) {
-        // TODO : start from an area
-        emitterData[i].position = Vec3(0.0);
+        float vel = rand_0_1() * (maxVel - minVel) + minVel;
 
-        emitterData[i].velocity = sampler.getSample();
-        emitterData[i].color = Vec3(0.9 * rand_0_1() + 0.1);
+        emitterData[i].position = Vec3(0.0);
+        emitterData[i].velocity = sampler.getSample() * vel;
+        emitterData[i].color = colorSampler.getSample();
         emitterData[i].lifetime = rand_0_1() * maxLifetime;
         emitterData[i].delay = rand_0_1();
     }

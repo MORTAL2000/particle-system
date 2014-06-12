@@ -50,7 +50,9 @@ HEADERS += \
     src/texture.h \
     src/conesampler.h \
 	src/sampler.h \
-	src/window.h
+	src/window.h \
+    src/color.h \
+    src/colorsampler.h
 
 SOURCES += \
     src/app.cpp \
@@ -73,7 +75,8 @@ SOURCES += \
 	src/waveparticlesnode.cpp \
     src/texture.cpp \
 	src/conesampler.cpp \
-    src/window.cpp
+    src/window.cpp \
+    src/colorsampler.cpp
 
 FORMS += \
     src/window.ui

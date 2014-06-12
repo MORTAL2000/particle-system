@@ -4,10 +4,12 @@
 #include "texture.h"
 #include "modelnode.h"
 #include "conesampler.h"
+#include "color.h"
+#include "colorsampler.h"
 
 struct EmitterVertexData {
     Vec3 position;
-    Vec3 color;
+    Color color;
     Vec3 velocity;
     float delay;
     float lifetime;
