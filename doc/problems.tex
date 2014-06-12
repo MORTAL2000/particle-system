@@ -27,12 +27,22 @@ l'ensemble des matrices a été uniformisé dans la notation française.
 
 \section{Rotation semi-automatique de la caméra}
 
+La gestion de la caméra est sans doute l'élément le plus difficile de ce projet.
+Celle ci est contrôlée avec les touches fléchées, mais également avec la souris
+(il faut appuyer sur la touche \emph{Alt} pour verrouiller/déverrouiller le
+mouvement de la souris). Lorsque l'on effectue plusieurs rotations avec la
+souris, alors que celle-ci est censée effectuer un simple mouvement sur deux
+axes (x et y), il semblerait qu'elle réalise également une rotation sur l'axe z.
+Ce problème est apparu et a disparu à plusieurs reprises, sans que la véritable
+raison soit réellement identifiée.
+
 \section{Gestion de l'alpha des textures}
 
 Les particules sont toutes considérées comme un point unique de l'espace, sur
 lesquelles est appliquée une texture. Dans un premier temps, la texture était un
 simple carré blanc. Puis celle-ci a évolué pour une image plus complexe,
 comportant un canal alpha.
+\newpage
 
 \begin{figure}[h]
 	\begin{center}
@@ -56,7 +66,7 @@ l'image à utiliser en texture. La constante \emph{GL\_RGBA} est à associer à 
 fonction, et permet ainsi un gestion du canal alpha pour cette texture de
 particule.
 
-\section{Insertion du rendu OpenGL dans un GUI}
+\section{Insertion du rendu OpenGL dans un GUI}\label{gui}
 
 Une des consignes du projet était d'avoir une interface Qt autour de la fenêtre
 de rendu OpenGL. Cette interface doit permettre, au travers de boutons ou autres
