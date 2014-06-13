@@ -18,6 +18,7 @@ public:
     ~Scene();
 
     void addNode(SceneNode* node);
+	void removeNode();
     Camera* getCamera();
 
     vector<SceneNode*>::iterator begin();

@@ -32,7 +32,9 @@ public:
 	explicit App(QWidget *parent = 0);
     ~App();
 
-    void init();
+	void init();
+
+	void changeEmitter(int type);
 
     void paintGL();
     void timerEvent(QTimerEvent *);

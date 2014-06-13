@@ -71,24 +71,6 @@
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QLabel" name="label_5">
-         <property name="text">
-          <string>Particles velocity</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QSlider" name="horizontalSlider">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
       <layout class="QVBoxLayout" name="verticalLayout_3"/>
      </item>
      <item>
@@ -123,7 +105,7 @@
  <connections>
   <connection>
    <sender>emmiterType</sender>
-   <signal>activated(int)</signal>
+   <signal>currentIndexChanged(int)</signal>
    <receiver>Window</receiver>
    <slot>selectEmitterType(int)</slot>
    <hints>

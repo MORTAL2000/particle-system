@@ -13,7 +13,8 @@ class SceneBuilder
 public:
     SceneBuilder() {}
 
-    static void buildScene(Scene *scene, RenderFramework *framework);
+	static void buildScene(Scene *scene, RenderFramework *framework);
+	static void changeScene(Scene *scene, RenderFramework *framework, int emitterType);
 };
 
 #endif // SCENEBUILDER_H

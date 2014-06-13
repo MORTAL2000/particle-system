@@ -16,7 +16,15 @@ Scene::~Scene()
 
 void Scene::addNode(SceneNode* node)
 {
-    nodes.push_back(node);
+	nodes.push_back(node);
+}
+
+void Scene::removeNode()
+{
+	vector<SceneNode*>::iterator it;
+	for(it = nodes.begin(); it != nodes.end(); ++it) {
+		delete *it;
+	}
 }
 
 Camera* Scene::getCamera()

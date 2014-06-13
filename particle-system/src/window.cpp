@@ -14,13 +14,7 @@ Window::~Window()
 
 void Window::selectEmitterType(int type)
 {
-	// TODO
-	// We're supposed to change the type the emitter here
-}
-
-void Window::setVelocity(int velocity)
-{
-
+	//app.changeEmitter(type);
 }
 
 void Window::keyPressEvent(QKeyEvent* event)

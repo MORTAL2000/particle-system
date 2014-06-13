@@ -28,14 +28,19 @@ void App::init()
 
     initShaders();
 
-    SceneBuilder::buildScene(scene, renderer);
+	SceneBuilder::buildScene(scene, renderer);
 
     setMouseTracking(true);
 
     QCursor curs = cursor();
     QPoint p(width() / 2, height() / 2);
     curs.setPos(mapToGlobal(p));
-    setCursor(curs);
+	setCursor(curs);
+}
+
+void App::changeEmitter(int type)
+{
+	SceneBuilder::changeScene(scene, renderer, type);
 }
 
 void App::initGlew()
