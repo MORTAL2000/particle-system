@@ -17,13 +17,20 @@ de chaque vertex et du temps. L'exemple le plus visuel est la position. Ainsi,
 il n'est par exemple pas possible de gérer les collisions entre particules mais c'est le GPU qui gère
 tous ces calculs.\\
 
-L'introduction du \emph{ShaderManager} a été très utile. C'est l'objet qui va gérer tous les
-shaders utilisés dans le projet.\\
-
 L'initialisation de ces attributs est simplifiée par l'introduction de \emph{Samplers}.
 Ces \emph{Samplers} servent uniquement à générer des données de manière aléatoire. Par exemple
 le \emph{ConeSampler} va simplement générer des vecteurs de directions (partant de la base du cône
 en prenant en compte son ouverture).
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=0.5\textwidth]{img/conesampler.png}
+	\end{center}
+	\caption{Shéma du \emph{ConeSampler}}
+\end{figure}
+
+L'introduction du \emph{ShaderManager} a été très utile. C'est l'objet qui va gérer tous les
+shaders utilisés dans le projet.
 
 \begin{figure}[h]
 	\begin{center}
